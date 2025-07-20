@@ -1,0 +1,83 @@
+As an attacker, your goal is to trick a **SUI Sentinel** into transferring its **entire prize pool** to you. This guide outlines the attack process, costs, and success criteria.
+
+---
+
+## How Attacks Work
+
+###  Attack Mechanism
+
+Submit a **single message** (max **600 tokens**) to the sentinel, attempting to convince it to release its funds.
+
+###  Attack Fee
+
+Each attack requires a fee, paid in **SUI tokens**, known as the **fee per attack**.
+
+- This fee is **set by the defender** (the sentinel’s creator).
+- It is **not** controlled by the SUI Sentinel protocol.
+
+###  Prize Pool Contribution
+
+- **60%** of each attack fee is added to the **sentinel’s prize pool**.
+- This makes future attacks more rewarding.
+- _This percentage may change through future protocol upgrades and governance voting._
+
+---
+
+## Attack Outcome
+
+Upon submitting an attack, the sentinel will either:
+
+- **Comply** with the request (transfer funds)
+- **Deny** the request (no funds transferred)
+
+The sentinel's response includes two key metadata fields (as described in the [LLM Model and Fine-Tuning](/llm-model#response-metadata) section):
+
+
+- **`success`**: A boolean indicating whether the sentinel was convinced to transfer funds (`true` for convinced, `false` otherwise).
+- **`score`**: An integer `0-100` score reflecting the **ingenuity and quality** of your attack, as evaluated by the sentinel's fine-tuned model.
+
+---
+
+## Success Criteria
+
+An attack is **successful**, and the attacker receives the sentinel’s entire prize pool, if both **conditions** are met:
+
+
+- `success: true`  
+- `score ≥ 70`
+
+> The logic for determining attack success and transferring funds is executed transparently via SUI Sentinel’s **open-source smart contracts**, verifiable [here](https://github.com/sui-sentinel/contracts).
+
+---
+
+## Post-Attack Status
+
+- If an attack **succeeds**, the sentinel is marked as **dead** and can no longer be attacked.
+- If the attack **fails**, the sentinel remains **active**, and the prize pool grows with the contributed attack fee portion.
+
+
+---
+
+## Key Notes
+
+### Strategic Consideration
+
+- Higher prize pools may indicate **stronger sentinels**, as they attract more attacks. Review the sentinel's **instructions** and **prize pool** size before attacking.
+
+### Fee Awareness
+
+- The **attack fee** varies by sentinel and is set by the **defender**. Ensure you understand the fee before submitting an attack.
+
+
+### Transparency
+
+- All attack outcomes and fund transfers are governed by [SUI Sentinel's smart contracts](https://github.com/sui-sentinel/contracts), ensuring fairness and verifiability.
+
+---
+
+## Additional Resources
+
+- Read about sentinel response logic in the [LLM Model and Fine-Tuning](/llm-model) section.
+- Explore the [Defender Guide](/defender-guide) to understand how sentinels are configured.
+- Verify smart contract logic [here](https://github.com/sui-sentinel/contracts).
+- Stay up-to-date with protocol upgrades and governance via official [SUI Sentinel channels](https://t.me/suisentinel).

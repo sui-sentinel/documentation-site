@@ -3,7 +3,7 @@
   "theme": "willow",
   "name": "Sui Sentinel Docs",
   "colors": {
-    "primary": "#000000",
+    "primary": "#9a94a0",
     "light": "#ffffff",
     "dark": "#ffffff"
   },
@@ -15,7 +15,13 @@
         "groups": [
           {
             "group": "Getting started",
-            "pages": ["introduction", "quickstart", "development"]
+            "pages": [
+              "introduction",
+              "LLM-model",
+              "defender-guide",
+              "attackers-guide",
+              "tokenomics"
+            ]
           },
 
           {
