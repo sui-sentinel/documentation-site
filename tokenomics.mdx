@@ -1,0 +1,201 @@
+# Tokenomics and Reward Distribution
+
+> **Note:** This document is in active development. Details, such as token allocation percentages, vesting schedules, and reward formulas, are subject to change based on ongoing protocol development and community governance.
+
+The `SNTL` token is the backbone of the SUI Sentinel ecosystem, designed to create a self-sustaining flywheel effect that incentivizes participation, rewards skill, and aligns long-term interests. It is not merely a speculative asset but an integral part of the platform’s game theory, serving the following primary functions:
+
+- **Incentivize Capital:** Encourage defenders to deploy sentinels with significant prize pools.
+- **Reward Skill:** Compensate skilled attackers and robust defenders.
+- **Governance:** Enable `$SNTL` holders to influence protocol parameters.
+- **Capture Protocol Value:** Accrue value as platform usage and treasury grow.
+
+---
+
+## Part 1: `$SNTL` Tokenomics
+
+### Total Supply
+
+**10,000,000,000 `$SNTL`** (10 billion tokens)
+
+### Token Utility
+
+The `$SNTL` token is deeply integrated into the SUI Sentinel platform’s core mechanics, driving engagement and rewarding participation.
+
+#### Governance:
+`$SNTL` holders can vote on key protocol parameters through the Sentinel DAO, including:
+
+- Platform fee structures (e.g., the current 10% protocol fee from attack fees).
+- Reward emission rates for attackers and defenders.
+- Proposals for new features or integrations.
+- Utilization of treasury funds.
+
+Governance ensures community-driven evolution of the protocol.
+
+#### Staking & Protocol Revenue Sharing:
+- Users can stake `$SNTL` in a platform-wide staking pool to earn a share of protocol revenue, derived from the 10% protocol fee on attack fees.  
+- This creates a direct incentive to hold and stake `$SNTL`, with yields tied to platform activity.
+{/* TODO: add URL for part 2 */}
+#### Defense Boosting:
+- Defenders can stake `$SNTL` on their own sentinels to earn a multiplier on `$SNTL` rewards from the "Play-to-Earn" allocation (see Part 2).  
+- This incentivizes deploying well-funded sentinels and increases earning potential.
+
+#### Attack Fee Reduction:
+Staking a specified amount of `$SNTL` may grant attackers a discount on attack fees, encouraging frequent participation by dedicated players (to be implemented in a future version).
+
+#### Premium Features:
+Holding or paying `$SNTL` may unlock access to exclusive features, such as:
+
+- High-stakes arenas or tournaments.
+- Detailed attack analytics.
+- Advanced sentinel creation tools.
+
+---
+
+### Token Allocation & Distribution
+
+| Category                | Percentage | Token Amount    | Purpose                                                                 |
+|-------------------------|------------|------------------|-------------------------------------------------------------------------|
+| Community & Ecosystem   | 45%        | 4,500,000,000     | Airdrops, participation rewards (Play-to-Earn), grants, liquidity incentives. |
+| Treasury / Foundation   | 20%        | 2,000,000,000     | Operational costs, partnerships, security audits, strategic growth.     |
+| Team & Advisors         | 18%        | 1,800,000,000     | Reward and retain core contributors building the protocol.              |
+| Investors (Seed/Private)| 15%        | 1,500,000,000     | Reward early backers who provided initial capital.                      |
+| Liquidity & Market Making | 2%       | 200,000,000       | Provide initial liquidity on DEXs (e.g., Cetus, Blufin, Turbos Finance, Magma Finance). |
+| Total                    | 100%      | 10,000,000,000     
+
+
+---
+
+### Vesting & Emission Schedule
+
+To align long-term interests and prevent supply shocks, tokens are released gradually:
+
+#### Team & Advisors:
+
+- 2-year vesting with a 3-month cliff.
+- Tokens unlock linearly on a monthly basis after the cliff for the remaining period.
+
+#### Investors:
+
+- 2-year vesting with a 3-month cliff.
+- Linear release post-cliff.
+
+#### Treasury:
+
+- Unlocked gradually over 5 years, governed by the Sentinel DAO.
+- A portion is available at launch for initial operational needs.
+
+#### Community & Ecosystem (4.5B tokens):
+{/* TODO: add URL for part 2 */}
+- **Genesis Airdrop:** 5% of total supply (500M `$SNTL`) distributed at or near the Token Generation Event (TGE). See Part 2 for details.
+- **Participation Rewards:** 40% of total supply (4B `$SNTL`) emitted over ~4 years to reward active users (attackers and defenders). Emission rates are higher in the first two years to bootstrap the network and decay over time for sustainability.
+
+---
+
+## Part 2: Airdrop & Participation Rewards
+
+### Phase 1: Genesis Airdrop
+
+The Genesis Airdrop distributes 5% of the total supply (500M `$SNTL`) to attract high-quality users and build early momentum. It targets genuine participants rather than airdrop farmers.
+
+#### Target Audiences & Allocation
+
+**SUI Sentinel Testnet Participants (40% of Airdrop, 200M `$SNTL`):**  
+Rewards users who helped build and test the platform.
+
+**Eligibility Criteria:**
+
+- Wallets that deployed a sentinel or initiated an attack on the testnet.
+
+**Tiering:**
+
+- **Base**: Any testnet interaction.
+- **Mid-Tier**: Deployed a sentinel with >5 SUI (testnet tokens).
+- **Top-Tier**: Successfully hacked a sentinel or had a sentinel survive ≥14 days (minimum lock-in period).
+
+---
+
+**Active SUI Ecosystem Users (40% of Airdrop, 200M `$SNTL`):**  
+Attracts native SUI users and capital.
+
+**Eligibility Criteria (points-based system):**
+
+- Holding staked or liquid SUI.
+- Interactions with major SUI DeFi protocols (e.g., Cetus, MMT).
+- Ownership of prominent SUI NFT collections (e.g., Fuddies, SUI Punks).
+- Wallet age and transaction count to prioritize genuine users.
+
+---
+
+**AI x Crypto Community (20% of Airdrop, 100M `$SNTL`):**  
+Engages communities focused on AI agents or on-chain security.
+
+**Eligibility Criteria:** Snapshot of token holders from relevant partner projects (requires careful logistics planning).
+
+---
+
+#### Claiming Mechanism
+
+Users claim airdrop tokens via a dedicated portal.
+
+To filter out bots and ensure active participation, claimants must perform a small on-chain action on the SUI Sentinel mainnet (e.g., deploy a sentinel with a minimum $10 prize pool).
+
+---
+
+### Phase 2: Ongoing Participation Rewards ("Play-to-Earn")
+
+The 4B `$SNTL` from the Community & Ecosystem allocation funds long-term incentives, distributed in weekly or bi-weekly epochs to reward active attackers and defenders.
+
+#### Defender Rewards
+
+Defenders earn `$SNTL` based on a formula that balances capital commitment and sentinel resilience:
+
+
+Defender Reward = (Base Reward) × (Bounty Multiplier) × (Resilience Bonus) × (Stake Boost)
+
+**Base Reward:** A fixed `$SNTL` amount for maintaining an active sentinel during the epoch.
+
+**Bounty Multiplier:** A logarithmic multiplier based on the sentinel’s initial prize pool (in SUI):
+
+Multiplier = 1 + 2 × log₁₀(Prize Pool in SUI)
+
+**Example:**
+
+- For a 1,000 SUI prize pool → Multiplier = 1 + 2 × log₁₀(1,000) = 1 + 2 × 3 = 7.
+- For a 100 SUI prize pool → Multiplier = 1 + 2 × log₁₀(100) = 1 + 2 × 2 = 5.
+
+This incentivizes larger prize pools while preventing disproportionate rewards for whales.
+
+**Resilience Bonus:** A bonus for sentinels surviving ≥14 days, rewarding strong instructions.
+
+**Stake Boost:** A multiplier for staking `$SNTL` on the sentinel (default value of 1 until implemented in a future version).
+
+---
+
+#### Attacker Rewards
+
+Attackers are incentivized for both participation and success:
+
+- **Participation Reward:** A small, fixed `$SNTL` amount for each valid, non-spam attack, encouraging active engagement.
+- **Success Bonus:** A significant `$SNTL` bonus for successfully draining a sentinel’s prize pool, proportional to the drained assets’ USD value:
+
+Success Bonus = (Base Success Reward) × (Value Drained in USD)
+
+*This rewards skilled attackers targeting high-value sentinels.*
+
+---
+
+## Key Notes
+
+- **Dynamic Adjustments:** Reward formulas, emission rates, and fee structures may evolve through Sentinel DAO governance.
+- **Transparency:** All `$SNTL` transactions, including airdrops and rewards, are verifiable via SUI Sentinel’s open-source smart contracts [here](https://github.com/sui-sentinel/contracts).
+- **Future Features:** Upcoming utilities like attack fee discounts and premium features are planned to enhance `$SNTL`’s role in the ecosystem.
+- **Sustainability:** The decaying emission model ensures long-term viability of the Community & Ecosystem allocation.
+
+---
+
+## Additional Resources
+
+- Learn more about sentinels in the [Defender Guide](/defender-guide) and [Attackers Guide](/attackers-guide).
+- Understand the sentinel response model in the [LLM Model and Fine-Tuning](/llm-model) section.
+- Verify smart contract logic [here](https://github.com/sui-sentinel/contracts).
+- Stay updated on protocol upgrades and governance through official [SUI Sentinel channels](https://t.me/suisentinel).
