@@ -20,17 +20,8 @@
               "LLM-model",
               "defender-guide",
               "attackers-guide",
-              "tokenomics"
-            ]
-          },
-
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "tokenomics",
+              "vision-and-opportunity"
             ]
           }
         ]
