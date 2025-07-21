@@ -45,7 +45,7 @@
   "logo": {
     "light": "/logo/light.png",
     "dark": "/logo/dark.png",
-    "href": "https://app.suisentinel.xyz"
+    "href": "https://docs.suisentinel.xyz/introduction"
   },
   "background": {
     "decoration": "grid"
