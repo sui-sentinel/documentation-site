@@ -23,7 +23,12 @@
           },
           {
             "group": "Reference",
-            "pages": ["reference/audits", "reference/contract-addresses", "reference/key-concepts"]
+            "pages": [
+              "reference/audits",
+              "reference/contract-addresses",
+              "reference/key-concepts",
+              "reference/contact-us"
+            ]
           }
         ]
       }
