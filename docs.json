@@ -23,6 +23,10 @@
               "tokenomics",
               "vision-and-Opportunity"
             ]
+          },
+          {
+            "group": "Reference",
+            "pages": ["reference/audits", "reference/contract-addresses", "reference/key-concepts"]
           }
         ]
       }
