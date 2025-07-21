@@ -15,14 +15,11 @@
         "groups": [
           {
             "group": "Getting started",
-            "pages": [
-              "introduction",
-              "LLM-model",
-              "defender-guide",
-              "attackers-guide",
-              "tokenomics",
-              "vision-and-Opportunity"
-            ]
+            "pages": ["introduction", "LLM-model", "tokenomics", "vision-and-Opportunity"]
+          },
+          {
+            "group": "Guides",
+            "pages": ["guides/defender-guide", "guides/attackers-guide"]
           },
           {
             "group": "Reference",
