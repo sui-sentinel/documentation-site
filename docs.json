@@ -75,7 +75,7 @@
     ],
     "primary": {
       "type": "button",
-      "label": "Explore",
+      "label": "Get Started",
       "href": "https://app.suisentinel.xyz"
     }
   },
