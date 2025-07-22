@@ -29,7 +29,10 @@
             "group": "Tokenomics",
             "pages": ["tokenomics/tokenomics"]
           },
-
+          {
+            "group": "Agents",
+            "pages": ["agents/how-to-feature-your-agent"]
+          },
           {
             "group": "Guides",
             "pages": []
