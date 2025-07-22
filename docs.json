@@ -15,7 +15,7 @@
         "groups": [
           {
             "group": "Getting started",
-            "pages": ["introduction", "LLM-model", "tokenomics", "vision-and-Opportunity"]
+            "pages": ["introduction", "llm-model", "tokenomics", "vision-and-opportunity"]
           },
           {
             "group": "Guides",
