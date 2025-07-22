@@ -15,11 +15,24 @@
         "groups": [
           {
             "group": "Getting started",
-            "pages": ["introduction", "llm-model", "tokenomics", "vision-and-opportunity"]
+            "pages": ["introduction", "defender-guide", "attackers-guide"]
           },
           {
+            "group": "Vision And Opportunity",
+            "pages": ["vision-and-opportunity/vision-and-opportunity"]
+          },
+          {
+            "group": "Models And Fine Tuning",
+            "pages": ["models-and-finetuning/llm-model"]
+          },
+          {
+            "group": "Tokenomics",
+            "pages": ["tokenomics/tokenomics"]
+          },
+
+          {
             "group": "Guides",
-            "pages": ["guides/defender-guide", "guides/attackers-guide"]
+            "pages": []
           },
           {
             "group": "Reference",
