@@ -48,9 +48,14 @@
     "global": {
       "anchors": [
         {
-          "anchor": "Join the Community",
+          "anchor": "Join the Telegram",
           "href": "https://t.me/suisentinel",
           "icon": "telegram"
+        },
+        {
+          "anchor": "Join the Discord",
+          "href": "https://discord.gg/bAz9g9u69K",
+          "icon": "discord"
         }
       ]
     }
