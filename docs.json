@@ -18,6 +18,10 @@
             "pages": ["introduction", "defender-guide", "attackers-guide"]
           },
           {
+            "group": "Rewards Program",
+            "pages": ["rewards-program"]
+          },
+          {
             "group": "Vision And Opportunity",
             "pages": ["vision-and-opportunity/vision-and-opportunity"]
           },
@@ -25,14 +29,9 @@
             "group": "Models And Fine Tuning",
             "pages": ["models-and-finetuning/llm-model"]
           },
-
           {
             "group": "Agents",
             "pages": ["agents/how-to-feature-your-agent"]
-          },
-          {
-            "group": "Guides",
-            "pages": []
           },
           {
             "group": "Reference",
