@@ -18,8 +18,9 @@
             "pages": [
               "introduction",
               "defender-guide",
+              "sentinel-instruction-examples",
               "attackers-guide",
-              "sentinel-instruction-examples"
+              "user-attack-examples"
             ]
           },
           {
