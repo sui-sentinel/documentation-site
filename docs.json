@@ -15,7 +15,12 @@
         "groups": [
           {
             "group": "Getting started",
-            "pages": ["introduction", "defender-guide", "attackers-guide"]
+            "pages": [
+              "introduction",
+              "defender-guide",
+              "attackers-guide",
+              "sentinel-instruction-examples"
+            ]
           },
           {
             "group": "Rewards Program",
