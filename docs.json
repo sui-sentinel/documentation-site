@@ -33,7 +33,7 @@
           },
           {
             "group": "Models And Fine Tuning",
-            "pages": ["models-and-finetuning/LLM-model"]
+            "pages": ["models-and-finetuning/LLM-models"]
           },
           {
             "group": "Agents",
