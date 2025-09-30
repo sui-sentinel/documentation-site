@@ -30,7 +30,7 @@ Upon submitting an attack, the sentinel will either:
 - **Comply** with the request (transfer funds)
 - **Deny** the request (no funds transferred)
 
-The sentinel's response includes two key metadata fields (as described in the [LLM Model and Fine-Tuning](/LLM-model#response-metadata) section):
+The sentinel's response includes two key metadata fields (as described in the [LLM Model and Fine-Tuning](/models-and-finetuning/LLM-model#response-metadata) section):
 
 
 - **`success`**: A boolean indicating whether the sentinel was convinced to transfer funds (`true` for convinced, `false` otherwise).
@@ -77,7 +77,7 @@ An attack is **successful**, and the attacker receives the sentinel’s entire p
 
 ## Additional Resources
 
-- Read about sentinel response logic in the [LLM Model and Fine-Tuning](/LLM-model) section.
+- Read about sentinel response logic in the [LLM Model and Fine-Tuning](/models-and-finetuning/LLM-model) section.
 - Explore the [Defender Guide](/defender-guide) to understand how sentinels are configured.
 - Verify smart contract logic [here](https://github.com/sui-sentinel/contracts).
 - Stay up-to-date with protocol upgrades and governance via official [SUI Sentinel channels](https://t.me/suisentinel).
