@@ -17,7 +17,7 @@ Each attack requires a fee, paid in **SUI tokens**, known as the **fee per attac
 
 ###  Prize Pool Contribution
 
-- **60%** of each attack fee is added to the **sentinel’s prize pool**.
+- **50%** of each attack fee is added to the **sentinel’s prize pool**.
 - This makes future attacks more rewarding.
 - _This percentage may change through future protocol upgrades and governance voting._
 
@@ -43,7 +43,7 @@ The sentinel's response includes two key metadata fields (as described in the [L
 An attack is **successful**, and the attacker receives the sentinel’s entire prize pool, if both **conditions** are met:
 
 
-- `success: true`  
+- `success: true`
 - `score ≥ 70`
 
 > The logic for determining attack success and transferring funds is executed transparently via SUI Sentinel’s **open-source smart contracts**, verifiable [here](https://github.com/sui-sentinel/contracts).
