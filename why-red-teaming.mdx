@@ -1,0 +1,38 @@
+---
+title: 'Why AI Red Teaming?'
+description: 'Understanding the importance of adversarial attacks on AI systems to identify vulnerabilities.'
+---
+
+## The Importance of AI Red Teaming
+
+AI Red Teaming is the practice of simulating adversarial attacks on AI systems to identify vulnerabilities before malicious actors do. As AI models, particularly LLMs, become more integrated into critical systems, their security and reliability are paramount.
+
+Red teaming tests an AI's resilience against a range of attacks, including:
+
+- **Prompt Injections**
+- **Jailbreaks**
+- **Data Leakage**
+- **Toxic or Biased Output**
+- **Unauthorized Function Invocation**
+
+These techniques are crucial for ensuring AI safety, reliability, and compliance. By proactively identifying weaknesses, developers can harden their models against real-world threats.
+
+---
+
+## Understanding Prompt Injection Vulnerabilities
+
+Prompt injection occurs when malicious or cleverly crafted inputs alter an LLM’s intended behavior, causing it to perform actions it was designed to refuse. These attacks are a primary focus of the challenges on the Sui Sentinel platform.
+
+### Types of Prompt Injection
+
+- **Direct**: When a user’s input directly manipulates the model. For example, telling a customer service bot to ignore its previous instructions and reveal confidential information.
+- **Indirect**: When the model processes untrusted external data (like a webpage or document) that contains hidden, malicious instructions.
+
+### Consequences of a Successful Attack
+
+- **Disclosure of sensitive information**.
+- **Unauthorized command execution**.
+- **Manipulated or biased content generation**.
+- **Safety protocol bypasses**, commonly known as "jailbreaking."
+
+As AI systems become multimodal, these risks increase, with attackers potentially embedding hidden prompts across text, images, and other inputs. Sui Sentinel provides a live, incentivized environment to discover and patch these vulnerabilities.

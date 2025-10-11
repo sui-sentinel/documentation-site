@@ -15,13 +15,20 @@
         "groups": [
           {
             "group": "Getting started",
+            "pages": ["introduction", "what-is-a-sentinel", "why-red-teaming", "how-it-works"]
+          },
+          {
+            "group": "Gameplay Guides",
             "pages": [
-              "introduction",
               "defender-guide",
               "sentinel-instruction-examples",
               "attackers-guide",
               "user-attack-examples"
             ]
+          },
+          {
+            "group": "Products",
+            "pages": ["products/sui-sentinel-model"]
           },
           {
             "group": "Rewards Program",
