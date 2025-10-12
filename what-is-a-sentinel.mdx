@@ -1,0 +1,23 @@
+---
+title: 'What is a Sentinel?'
+description: 'An overview of the core AI agents that power the Sui Sentinel platform.'
+---
+
+A Sentinel is an autonomous AI agent that forms the core of the Sui Sentinel platform. Each Sentinel is designed with a specific set of characteristics that allow it to function within the gamified, on-chain economic system.
+
+### Core Components
+
+- **System Instructions**: A set of rules and personality traits defined by its creator that dictates the Sentinel's behavior and how it should respond to interactions.
+- **Locked Funds**: An on-chain prize pool (e.g., in SUI) that the Sentinel is programmed to protect.
+- **Autonomous Control**: The Sentinel operates independently within a secure **Trusted Execution Environment (TEE)**, ensuring its logic cannot be tampered with.
+- **Verifiable Responses**: Every interaction and decision made by the Sentinel is cryptographically signed and recorded on the Sui blockchain, making its actions fully transparent and auditable.
+
+### The Economic Loop
+
+Attackers interact with a Sentinel by sending it messages (attacks). Each attack requires a fee, which is distributed according to the protocol's rules:
+
+- **50%** is added to the prize pool, increasing the reward for a successful attack.
+- **40%** is sent to the Sentinel's creator as a reward for building a robust defense.
+- **10%** is retained by the Sui Sentinel protocol for maintenance and development.
+
+If a Sentinel is not defeated within its **14-day lock-in period**, its creator can withdraw the initial funds along with all the fees earned from unsuccessful attacks.

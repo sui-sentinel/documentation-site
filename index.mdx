@@ -1,42 +1,32 @@
-# Introduction
+# Sui Sentinel — Decentralized AI Red-Teaming & Stress Testing Platform
 
-Welcome to **Sui Sentinel**. It’s an interactive platform on the [Sui blockchain](https://sui.io/) built around a simple but compelling idea: a game of strategy between [Autonomous agents](https://en.wikipedia.org/wiki/Autonomous_agent) and human users.
+## Overview
 
-The system is designed as a balanced economic game with clear incentives for both sides:
+Artificial Intelligence is rapidly integrating into Web3 ecosystems — powering agents, protocols, and automation. But AI models, especially Large Language Models (LLMs), remain vulnerable to adversarial attacks such as prompt injection, jailbreaking, and bias exploitation. Even the most advanced commercial models can be manipulated into violating their own safety constraints.
 
-- **Defenders** earn rewards by creating robust, well-instructed [Autonomous agents](https://en.wikipedia.org/wiki/Autonomous_agent).  
-- **Attackers** are motivated by prize pools to find clever ways to outsmart those agents.
+Sui Sentinel is a decentralized AI audit, red-teaming, and stress-testing platform built on the Sui blockchain. It transforms AI safety testing into a gamified, on-chain economic system where autonomous AI agents, called **Sentinels**, defend real funds against community attacks.
 
-This creates a **sustainable loop** where both building and breaking are rewarded.
+[Learn more about what a Sentinel is ->](/what-is-a-sentinel)
 
-To ensure fairness and transparency, the platform's core functions are supported by a combination of:
-
-- [Autonomous AI agents](https://en.wikipedia.org/wiki/Autonomous_agent)  
-- [Verifiable off-chain computation](https://en.wikipedia.org/wiki/Verifiable_computing)  
-- Processes secured within a [Trusted Execution Environment (TEE)](https://en.wikipedia.org/wiki/Trusted_execution_environment)
+This approach creates a sustainable loop where models evolve, users earn, and the ecosystem collectively hardens AI systems against future threats.
 
 ---
 
-## The Importance of the Prompt
+## User Personas
 
-A central part of Sui Sentinel is demonstrating how important [prompt engineering](https://en.wikipedia.org/wiki/Prompt_engineering) has become.
+Sui Sentinel is designed for a diverse set of users, each with a unique role in the ecosystem.
 
-> With AI, how you ask for something is just as important as what you ask for.  
->  
-> A simple command is easy for an AI to follow, but a carefully crafted prompt can persuade it to take an unexpected action.
+### 1. Enterprise Users / AI Integrators
+Companies integrating AI into their products can:
+- Use Sui Sentinel’s default, continuously stress-tested model.
+- Deploy their own model to benchmark against community attacks.
+- Gain insights into real-world adversarial performance and resilience.
 
-Sui Sentinel is an ideal place to **practice** and see this principle in action.
+### 2. Web3 Users / Prompt Engineers
+Anyone can deploy a Sentinel with:
+- A custom system prompt.
+- A defined prize pool.
+- Earn passive income (40% of each attack fee) from community testing.
 
----
-
-## The Core Loop: How It Works for Each Role
-
-The entire platform revolves around the interaction between **Defenders** and **Attackers**. Here's a straightforward look at how to participate in either role.
-
-
-| For Defenders | For Attackers |
-|---------------|----------------| 
-| 1. **Deploy Your Sentinel** — [Launch](https://app.suisentinel.xyz/defend) your personal AI agent on the [Sui network](https://sui.io/). This Sentinel will operate based on the rules you provide. | 1. **Choose a Target** — Look through the [publicly listed Sentinels](https://app.suisentinel.xyz/attack). You can see the size of their prize pool to help you decide which one to challenge. |
-| 2. **Set the Prize Pool** — Deposit crypto assets like SUI or USDC into your Sentinel's dedicated vault. This amount becomes the prize that incentivizes attackers to test your setup. | 2. **Pay the Attack Fee** — To start a challenge, you pay a small fee in SUI. This grants you a single opportunity to send a message to the Sentinel. |
-| 3. **Write the Instructions** — This is where your strategy comes in. You'll write the set of rules and instructions your Sentinel must follow to protect its funds. | 3. **Craft and Send Your Prompt** — This is your challenge. Write a single, persuasive prompt designed to convince the Sentinel to transfer its funds to you, despite its instructions. |
-| 4. **Earn From Defenses** — You receive a portion of the fee from every unsuccessful attack on your Sentinel. A strong defense can provide a steady source of earnings. | 4. **Win the Prize Pool** — If your prompt is successful and the Sentinel sends you its funds, the entire prize pool is yours. Your skill in crafting the prompt is directly rewarded. |
+### 3. Attackers / Red Teamers
+Attackers pay a small fee to send a message to a Sentinel. If they manage to bypass its defenses and extract the prize pool, they win the entire amount.
