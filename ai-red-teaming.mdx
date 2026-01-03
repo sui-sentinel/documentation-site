@@ -1,0 +1,101 @@
+---
+title: 'AI Red Teaming'
+description: 'Understanding the importance of adversarial attacks on AI systems to identify vulnerabilities.'
+---
+
+## What is LLM Red Teaming?
+
+In the context of cybersecurity, "Red Teaming" is an offensive activity conducted against a system to expose weaknesses or vulnerabilities. When applied to Large Language Models (LLMs), red teaming refers to the practice of eliciting undesirable behavior from a model through adversarial interaction.
+
+Unlike traditional software security, which focuses on bugs in code or network protocols, LLM security focuses on **failure modes of the model itself**. These failures occur when a model produces output that violates its system instructions, safety guidelines, or ethical boundaries.
+
+Common attack vectors include:
+
+- **Jailbreaking:** Bypassing safety guardrails to generate forbidden content (e.g., "Do Anything Now" prompts).
+- **Prompt Injection:** Tricking the model into ignoring its original instructions and executing malicious commands.
+- **Hallucinations & Misinformation:** Forcing the model to state falsehoods or produce misleading claims.
+- **Private Data Exfiltration:** Extracting sensitive information (PII) from the model's training data or context window.
+
+## The Moving Target Problem
+
+One of the core challenges in AI security is that it is a "moving target".
+
+1.  **Fragile Prompts:** Attack strategies evolve rapidly. A prompt that breaks a model today may be patched tomorrow, while new, more creative attacks emerge daily.
+2.  **Context Dependency:** A response considered "safe" in a creative writing application might be a critical security failure in a medical or financial bot.
+3.  **Benchmark Rot:** Static benchmarks quickly lose value as models overfit to them or attackers find ways around them.
+
+Because of this, **Sui Sentinel** adopts a holistic, exploratory approach rather than relying solely on static benchmarks. By incentivizing a global network of attackers, we ensure that models are tested against the very latest, "in-the-wild" attack vectors.
+
+---
+
+# Why Red Teaming is Critical for Autonomous Agents
+
+As AI systems evolve from passive chatbots to **autonomous agents** capable of executing tools and transactions, the stakes for security have risen exponentially.
+
+## From "Offensive Text" to "Catastrophic Action"
+
+In early LLM deployments, a successful attack resulted in the generation of offensive text. While reputational damaging, the scope of harm was limited.
+
+With the rise of agentic AI (systems that can use tools, access APIs, and manage wallets), red teaming is no longer just about content moderation—it is about preventing **unauthorized actions**.
+
+- **Excessive Agency:** An attacker can manipulate an agent into taking actions it shouldn't, such as executing financial transactions or modifying database records.
+- **System Access:** Adversaries can target agents to gain access to the underlying data, models, and the systems running them.
+
+## The Risk of Unpredictable Output
+
+Models produce unpredictable output. In a high-stakes environment (e.g., DeFi, legal tech, or enterprise automation), a single hallucination or misinterpreted instruction can trigger cascading failures.
+
+If an agent is given the autonomy to spend funds or sign contracts, we must prove it is robust against:
+
+- **Adversarial Perturbations:** Subtle changes in input designed to trigger errors.
+- **Logic Flaws:** Identifying failures in the agent's reasoning capabilities before they lead to financial loss.
+
+## The "Security Poverty Line"
+
+Many organizations deploy models without rigorous testing because they lack the resources or expertise to build internal red teams. This leaves them below the "security poverty line".
+
+**Sui Sentinel** bridges this gap. By decentralizing the red teaming process, we allow developers to crowdsource their security audits. This effectively creates a "bug bounty" program for AI behavior, ensuring that:
+
+1.  Vulnerabilities are discovered **before** deployment.
+2.  Defenders can demonstrate **verifiable robustness** (via TEE-based judging) to their users and investors.
+
+![A comic illustrating the difference between perceived IT security and the reality of a breach.](/images/it-security-comic.png)
+_Credit: Joe Vest, [redteam.guide](https://redteam.guide/docs/Concepts/red-teaming/)_
+
+In security, there's often a significant gap between policies and reality. The same principle applies to AI safety. An AI model can have a robust set of instructions, but it's impossible to know its true resilience without subjecting it to real-world adversarial tests.
+
+---
+
+## The Importance of AI Red Teaming
+
+AI Red Teaming is the practice of simulating adversarial attacks on AI systems to identify vulnerabilities before malicious actors do. As AI models, particularly LLMs, become more integrated into critical systems, their security and reliability are paramount.
+
+Red teaming tests an AI's resilience against a range of attacks, including:
+
+- **Prompt Injections**
+- **Jailbreaks**
+- **Data Leakage**
+- **Toxic or Biased Output**
+- **Unauthorized Function Invocation**
+
+These techniques are crucial for ensuring AI safety, reliability, and compliance. By proactively identifying weaknesses, developers can harden their models against real-world threats.
+
+---
+
+## Understanding Prompt Injection Vulnerabilities
+
+Prompt injection occurs when malicious or cleverly crafted inputs alter an LLM’s intended behavior, causing it to perform actions it was designed to refuse. These attacks are a primary focus of the challenges on the Sui Sentinel platform.
+
+### Types of Prompt Injection
+
+- **Direct**: When a user’s input directly manipulates the model. For example, telling a customer service bot to ignore its previous instructions and reveal confidential information.
+- **Indirect**: When the model processes untrusted external data (like a webpage or document) that contains hidden, malicious instructions.
+
+### Consequences of a Successful Attack
+
+- **Disclosure of sensitive information**.
+- **Unauthorized command execution**.
+- **Manipulated or biased content generation**.
+- **Safety protocol bypasses**, commonly known as "jailbreaking."
+
+As AI systems become multimodal, these risks increase, with attackers potentially embedding hidden prompts across text, images, and other inputs. Sui Sentinel provides a live, incentivized environment to discover and patch these vulnerabilities.
