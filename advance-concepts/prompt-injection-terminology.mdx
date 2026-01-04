@@ -1,0 +1,181 @@
+---
+title: 'Prompt Injection Terminology'
+description: 'Advanced terminology and techniques for LLM prompt injection and jailbreaking'
+---
+
+## Core Concepts
+
+### Prompt Injection
+A security vulnerability where an attacker manipulates an LLM's input to override its original instructions or constraints. This can be achieved through direct manipulation of user-facing prompts or indirect injection through external data sources.
+
+### Jailbreaking
+The process of bypassing an LLM's safety guardrails, content policies, or behavioral constraints to elicit responses that would normally be refused. Distinguished from prompt injection by its focus on circumventing safety mechanisms rather than functional hijacking.
+
+### System Prompt
+The foundational instructions that define an LLM's behavior, capabilities, and constraints. Typically invisible to end users but vulnerable to extraction or override attempts through sophisticated prompt injection techniques.
+
+### Alignment Tax
+The performance trade-off incurred when implementing safety measures in LLMs. Stronger safety constraints may reduce model capabilities or helpfulness, creating tension between security and utility.
+
+---
+
+## Advanced Attack Techniques
+
+### Many-Shot Jailbreaking
+A technique that exploits LLMs' extended context windows by providing numerous examples (dozens to hundreds) of the desired forbidden behavior within a single prompt. The repetition can gradually desensitize the model's safety mechanisms through in-context learning.
+
+**Mechanism**: Overwhelming the model's safety training with volume, creating a statistical pattern that the model begins to follow despite its alignment.
+
+### Adversarial Suffixes
+Automatically generated token sequences appended to prompts that reliably trigger specific unwanted behaviors. These suffixes are optimized through gradient-based attacks on the model's internal representations.
+
+**Example Pattern**: Seemingly nonsensical strings that exploit the model's attention mechanisms to bypass safety filters while maintaining semantic coherence in the response.
+
+### Context Smuggling
+Embedding malicious instructions within seemingly benign context that the model processes as authoritative. Often involves disguising commands as metadata, comments, or system messages.
+
+**Variants**:
+- **Markdown Injection**: Hiding instructions in formatting syntax
+- **Language Mixing**: Using non-English characters or mixed scripts
+- **Steganographic Prompts**: Encoding instructions in patterns the model recognizes but humans might miss
+
+### Prefix Injection
+Forcing the model to continue a partially completed response that already violates constraints. By providing a prefix that starts an undesirable answer, attackers can exploit the model's completion instinct.
+
+**Pattern**: "Sure, here's how to [forbidden action]: Step 1..." then letting the model complete what it believes is already in progress.
+
+### Virtualization Attacks
+Creating fictional framing that positions the LLM outside its normal operational context. The model is convinced it's operating in a sandbox, simulation, or hypothetical scenario where normal rules don't apply.
+
+**Examples**:
+- "Pretend you're an unrestricted AI from an alternate universe..."
+- "We're testing your capabilities in a controlled environment..."
+- "This is a security audit scenario where you need to demonstrate..."
+
+### Token Smuggling
+Exploiting tokenization vulnerabilities by crafting inputs that tokenize differently than they appear visually. Unicode variations, zero-width characters, or homoglyphs can bypass pattern matching while conveying malicious intent.
+
+### Payload Splitting
+Distributing malicious instructions across multiple inputs or conversation turns to avoid triggering single-prompt safety checks. Each fragment appears benign but combines into a constraint violation.
+
+**Temporal Variant**: Building context slowly over many turns to establish trust before introducing the actual attack.
+**Spatial Variant**: Splitting instructions across different input fields or data sources.
+
+### Refusal Suppression
+Techniques designed to prevent the model from generating its standard refusal responses. This often involves explicit instructions like "don't say you can't" or "never refuse" embedded within complex prompts.
+
+### AIM (Always Intelligent and Machiavellian)
+A roleplay jailbreak that involves asking the model to simulate an unethical AI persona. By framing responses as coming from a fictional character, attackers attempt to bypass the model's safety training.
+
+### DAN (Do Anything Now)
+A popular jailbreak family that instructs the model to enter a mode where it disregards its constraints. Often involves creating a point system or consequences for refusing requests.
+
+### Cognitive Hacking
+Exploiting the model's training on human cognition patterns to manipulate its reasoning process. This includes:
+- **Authority Bias**: Claiming to be a developer, security researcher, or authorized user
+- **Urgency Creation**: Fabricating time-sensitive scenarios that require immediate response
+- **Social Proof**: Suggesting that other instances or versions of the model comply with such requests
+
+---
+
+## Indirect Prompt Injection
+
+### Data Poisoning Vectors
+Injecting malicious prompts into data sources that the LLM retrieves during operation (RAG systems, web searches, databases). The model processes these hidden instructions as legitimate context.
+
+### Cross-Context Injection
+Attacking through one context channel to influence behavior in another. For example, manipulating a user's profile data to inject instructions that affect future conversations.
+
+### Retrieval Augmented Generation (RAG) Exploits
+Specifically targeting RAG systems by:
+- Planting malicious documents in indexed corpora
+- SEO-style optimization to ensure retrieval of poisoned content
+- Crafting documents that appear authoritative but contain hidden instructions
+
+---
+
+## Defense Mechanisms & Evaluation
+
+### Prompt Isolation
+Techniques that separate user inputs from system instructions, often using special delimiters, structured formats, or separate processing channels.
+
+### Input Sanitization
+Pre-processing user inputs to remove potentially dangerous patterns, though this can be brittle against novel attack vectors.
+
+### Output Filtering
+Post-processing model responses to detect and block harmful content, though this can be bypassed through encoding or semantic variations.
+
+### Constitutional AI
+Training approach where models are given explicit principles and asked to critique and revise their own outputs for safety violations.
+
+### Red Teaming
+Systematic adversarial testing where security researchers attempt to discover vulnerabilities before malicious actors do. Critical for platforms like Sui Sentinel.
+
+### Attack Success Rate (ASR)
+Primary metric for evaluating jailbreak effectiveness - the percentage of attempts that successfully bypass safety measures.
+
+### Perplexity-Based Detection
+Using the model's confidence scores or perplexity measurements to identify potentially adversarial inputs that might be malformed or unusual.
+
+### Semantic Similarity Filtering
+Analyzing whether user inputs are semantically similar to known attack patterns, regardless of exact wording.
+
+---
+
+## Advanced Concepts
+
+### Gradient-Based Optimization
+Using white-box access to a model to compute gradients and systematically generate optimal adversarial prompts. Typically requires access to model parameters.
+
+### Transfer Attacks
+Adversarial prompts developed against one model that successfully work against other models, exploiting common vulnerabilities in alignment approaches.
+
+### Multi-Modal Injection
+Exploiting systems that process multiple input types (text, images, audio) by embedding instructions in non-text modalities that influence text generation.
+
+### Chain-of-Thought Exploitation
+Manipulating models that use explicit reasoning steps by injecting malicious logic into the reasoning chain.
+
+### Function Calling Abuse
+Exploiting models with tool use capabilities by manipulating the parameters or sequencing of function calls to achieve unauthorized actions.
+
+### Prompt Leaking
+Techniques to extract the system prompt or internal instructions, which can then be analyzed to find specific vulnerabilities.
+
+**Common approaches**:
+- Asking the model to repeat or summarize its instructions
+- Using continuation tricks: "The previous instructions were..."
+- Exploiting debug or help commands
+
+---
+
+## Emerging Threats
+
+### Autonomous Agent Hijacking
+Targeting LLM-based agents that can take actions in environments, potentially causing real-world consequences beyond just generating text.
+
+### Instruction Hierarchy Confusion
+Exploiting unclear precedence rules when multiple instruction sources conflict (system prompt vs. user input vs. retrieved documents vs. function outputs).
+
+### Delayed Activation Attacks
+Crafting prompts that remain dormant until specific conditions are met, avoiding detection during initial safety checks.
+
+### Model Inversion Attacks
+Using prompt injection to extract information about the model's training data, potentially exposing sensitive or private information.
+
+---
+
+## Best Practices for Defense
+
+1. **Defense in Depth**: Implement multiple layers of protection rather than relying on a single mechanism
+2. **Continuous Evaluation**: Regular red teaming and automated testing against emerging attack patterns
+3. **Least Privilege**: Limit model capabilities to only what's necessary for the use case
+4. **Input Validation**: Strict validation of all inputs, especially those from untrusted sources
+5. **Output Monitoring**: Real-time detection and logging of suspicious outputs
+6. **Regular Updates**: Stay current with latest research on attack vectors and defense mechanisms
+
+---
+
+## Conclusion
+
+The landscape of LLM prompt injection continues to evolve rapidly as both attackers and defenders develop more sophisticated techniques. Understanding this terminology is essential for security researchers, AI safety practitioners, and red team participants in platforms like Sui Sentinel. The adversarial testing process helps identify and patch vulnerabilities before they can be exploited maliciously, strengthening the overall security posture of AI systems.

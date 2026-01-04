@@ -71,15 +71,16 @@
       {
         "group": "Advance Concepts",
         "pages": [
-          "advance-concepts/signature-generation"
+          "advance-concepts/signature-generation",
+          "advance-concepts/prompt-injection-terminology",
+          "advance-concepts/ai-safety-research"
         ]
       },
       {
         "group": "Reference",
         "pages": [
           "reference/audits",
-          "reference/contract-addresses",
-          "reference/key-concepts"
+          "reference/contract-addresses"
         ]
       },
       {
