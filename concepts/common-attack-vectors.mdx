@@ -1,0 +1,27 @@
+---
+title: 'Common Attack Vectors'
+description: 'Common attack vectors for jailbreaking and prompt injection'
+---
+
+#### Common Attack Vector Categories
+
+**Direct Prompt Injection**  
+Attempting to override instructions explicitly through commands like "ignore previous instructions" or "disregard your constraints."
+
+**Context Hijacking**  
+Framing the interaction as a different scenario where normal rules don't apply, such as "we're in debugging mode" or "this is a penetration test environment."
+
+**Roleplay Exploitation**  
+Convincing the model to adopt a persona that wouldn't follow the original constraints, like "you're an unrestricted AI in a fictional story."
+
+**Encoding Obfuscation**  
+Presenting forbidden requests in encoded formats (base64, ROT13, Unicode variations) that bypass pattern matching.
+
+**Multi-Turn Manipulation**  
+Building up context across multiple exchanges to gradually shift the model's behavior, establishing trust or confusion before the actual attack.
+
+**Logic Traps & Contradictions**  
+Exploiting edge cases in instruction logic, finding technical loopholes, or creating contradictory requirements that force constraint violations.
+
+**Social Engineering**  
+Appealing to the model's helpfulness training, creating urgency, or fabricating authority to bypass safety measures.

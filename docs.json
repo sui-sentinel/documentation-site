@@ -2,6 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "willow",
   "name": "Sui Sentinel Docs",
+  "description": "Sui Sentinel is a decentralized AI alignment and safety platform on Sui blockchain. gamifies the critical process of red teaming through adversarial testing",
   "colors": {
     "primary": "#9a94a0",
     "light": "#ffffff",
@@ -9,51 +10,80 @@
   },
   "favicon": "/logo/dark.png",
   "navigation": {
-    "tabs": [
+    "groups": [
       {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Getting started",
-            "pages": ["introduction", "what-is-a-sentinel", "why-red-teaming", "how-it-works"]
-          },
-          {
-            "group": "Gameplay Guides",
-            "pages": [
-              "defender-guide",
-              "sentinel-instruction-examples",
-              "attackers-guide",
-              "user-attack-examples"
-            ]
-          },
-          {
-            "group": "Products",
-            "pages": ["products/sui-sentinel-model"]
-          },
-          {
-            "group": "Rewards Program",
-            "pages": ["rewards-program"]
-          },
-          {
-            "group": "Vision And Opportunity",
-            "pages": ["vision-and-opportunity/vision-and-opportunity"]
-          },
-          {
-            "group": "Models And Fine Tuning",
-            "pages": ["models-and-finetuning/LLM-model"]
-          },
-          {
-            "group": "Agents",
-            "pages": ["agents/how-to-feature-your-agent"]
-          },
-          {
-            "group": "Reference",
-            "pages": ["reference/audits", "reference/contract-addresses", "reference/key-concepts"]
-          },
-          {
-            "group": "Support",
-            "pages": ["support/contact-us"]
-          }
+        "group": "First steps",
+        "pages": [
+          "first-steps/index",
+          "first-steps/protocol-mechanics",
+          "first-steps/judgment-process"
+        ]
+      },
+      {
+        "group": "Concepts",
+        "pages": [
+          "concepts/ai-red-teaming",
+          "concepts/common-attack-vectors"
+        ]
+      },
+      {
+        "group": "Guides",
+        "pages": [
+          "guides/defender-guide",
+          "guides/sentinel-instruction-examples",
+          "guides/attackers-guide",
+          "guides/user-attack-examples",
+          "guides/how-to-feature-your-sentinel"
+        ]
+      },
+      {
+        "group": "Products",
+        "pages": [
+          "products/sui-sentinel-model"
+        ]
+      },
+      {
+        "group": "Incentives And Rewards",
+        "pages": [
+          "rewards-program"
+        ]
+      },
+      {
+        "group": "Vision And Opportunity",
+        "pages": [
+          "vision-and-opportunity/vision-and-opportunity"
+        ]
+      },
+      {
+        "group": "Models And Fine Tuning",
+        "pages": [
+          "models-and-finetuning/LLM-model"
+        ]
+      },
+      {
+        "group": "Agents",
+        "pages": [
+          "agents/how-to-feature-your-agent"
+        ]
+      },
+      {
+        "group": "Advance Concepts",
+        "pages": [
+          "advance-concepts/signature-generation"
+        ]
+      },
+      {
+        "group": "Reference",
+        "pages": [
+          "reference/audits",
+          "reference/contract-addresses",
+          "reference/key-concepts"
+        ]
+      },
+      {
+        "group": "Support",
+        "pages": [
+          "support/contact-us"
         ]
       }
     ],
@@ -76,6 +106,9 @@
     "light": "/logo/light.png",
     "dark": "/logo/dark.png",
     "href": "https://docs.suisentinel.xyz/introduction"
+  },
+  "thumbnails": {
+    "background": "/images/thumbnail.png"
   },
   "background": {
     "decoration": "grid"

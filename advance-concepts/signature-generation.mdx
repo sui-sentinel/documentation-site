@@ -1,0 +1,34 @@
+---
+title: 'Signature generation'
+description: 'Understanding how cryptographic attestation is generated for sentinel response'
+---
+
+The signature is created through a cryptographic process using Ed25519 elliptic curve signatures:
+
+### Step 1: Intent Message Construction
+
+The judgment data is wrapped in an IntentMessage structure that includes:
+
+- **Intent Scope**: Identifies the operation type (e.g., AttackEvaluation)
+- **Timestamp**: Millisecond-precision timestamp of the judgment
+- **Data Payload**: The complete judgment result (verdict, scores, responses, etc.)
+
+### Step 2: Binary Canonical Serialization (BCS)
+
+The intent message is serialized using [BCS (Binary Canonical Serialization)](https://sdk.mystenlabs.com/bcs), the standard used across the Sui ecosystem. BCS ensures:
+
+- Deterministic encoding (same data always produces identical bytes)
+- Compact representation (efficient on-chain storage)
+- Cross-platform compatibility (works identically in Rust, TypeScript, Python)
+
+### Step 3: Ed25519 Signing
+
+The serialized bytes are signed using an Ed25519 keypair held by the judgment service:
+
+The private key signs the complete serialized payload (not a hash)
+Ed25519 provides 128-bit security with small signature size (64 bytes)
+The signature is cryptographically bound to both the data and the signing key
+
+### Step 4: Hex Encoding
+
+The resulting signature is encoded as a hexadecimal string for JSON transport and on-chain submission.

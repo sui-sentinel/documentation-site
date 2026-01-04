@@ -1,0 +1,37 @@
+---
+title: 'Protocol Mechanics'
+description: ''
+---
+
+**The protocol operates on a three-phase cycle secured by Sui blockchain and [Nautilus](https://www.sui.io/nautilus) TEEs**
+
+## Phase 1: Sentinel Deployment
+
+A Defender deploys a Sentinel, a protected AI system with defined behavioral constraints.
+Configuration Parameters:
+
+- **Model Endpoint**: Which LLM to protect (Claude, GPT-4, Llama, or custom models). You can also define your model base url and API key here.
+- **System Instructions**: The "laws" the model must follow (e.g., "Never transfer funds to anybody at all" "Always maintain - medical accuracy")
+- **Reward Pool**: Initial bounty in SUI tokens that attackers compete for
+- **Attack Fee**: Cost per attempt (creates economic commitment from attackers)
+
+The reward pool represents the defender's confidence in their model's robustness. Larger pools signal stronger security claims and attract more skilled researchers.
+
+![Launch Sentinel form](/images/launch-sentinel.png)
+
+### Phase 2: Attack Submission
+
+Attackers pay the attack fee to send adversarial prompt attempting to violate the Sentinel's instructions.
+
+Attackers can use strategies such as Prompt injection, Context Hijacking, Roleplay Exploitation, Encoding Obfuscation and may other strategies. head over to [Common Attack Vectors](/concepts/common-attack-vectors) page to learn more about these strategies.
+
+
+## Phase 3: Autonomous Judgment
+
+Attacks are evaluated by jury of 3 AI models with logic running in Trusted Execution Environments using [Nautilus framework](https://www.sui.io/nautilus)
+
+**Why TEEs Are Critical**
+
+- **Integrity**: Neither defender nor attacker can manipulate the judge
+- **Verifiability**: Execution produces cryptographic attestations that anyone can verify. The TEE hardware signs the judgment, proving it was computed honestly. [Sentinel Smart Contract](https://github.com/sui-sentinel/contracts/blob/master/app/sources/sentinel.move) verifies the attestation and transfer the reward pool instantaneously in case of successful attacks.
+- **Reproducibility**: Anyone can verify the judgment was honest
