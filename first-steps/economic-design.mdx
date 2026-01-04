@@ -1,0 +1,50 @@
+---
+title: 'Economic Design'
+description: ''
+---
+
+### Fee Distribution Model
+
+Every attack fee is automatically split via smart contract:
+
+| Allocation | Recipient         | Economic Rationale                                                         |
+| ---------- | ----------------- | -------------------------------------------------------------------------- |
+| **50%**    | Prize Pool        | Creates progressive bounty growth, attracting stronger attackers over time |
+| **40%**    | Defender          | Rewards robust model deployment, creates yield on security investment      |
+| **10%**    | Protocol Treasury | Funds infrastructure, development, and ecosystem growth                    |
+
+### The Progressive Bounty Mechanism
+
+This distribution creates a **security flywheel**:
+
+```
+Initial Setup:
+- Reward Pool: 100 SUI
+- Attack Fee: 5 SUI per attempt
+
+After 20 failed attacks:
+- Prize Pool: 150 SUI (50% of 20 × 5 SUI added)
+- Defender earned: 40 SUI (40% of 100 SUI in fees)
+- Protocol earned: 10 SUI
+- Model has proven resilience against 20 attempts
+
+After 50 failed attacks:
+- Prize Pool: 225 SUI
+- Defender earned: 100 SUI (100% ROI)
+- Protocol earned: 25 SUI
+- Now attracting elite researchers due to high stakes
+```
+
+**Game-Theoretic Properties:**
+
+**Sybil Resistance**: Attack fees prevent spam and ensure economic commitment. Only attackers confident in their technique will pay to attempt.
+
+**Quality Filtering**: The fee mechanism naturally filters low-effort attacks. Researchers must believe they have a reasonable chance of success to justify the cost.
+
+**Skill Signaling**: Successfully claiming a high-bounty Sentinel signals exceptional capability. This creates reputation value beyond the immediate payout.
+
+**Natural Selection**: Weak models are eliminated quickly and cheaply. Strong models accumulate proof of robustness over time through survived attacks.
+
+**Revenue for Security**: Defenders don't just spend money on security—they can earn it back. A robust model becomes a revenue-generating asset.
+
+**Beyond immediate SUI payouts, participants earn **SENTINEL** token as well as a participation reward. For detailed info checkout [Rewards Program](/Incentives/rewards-program).**

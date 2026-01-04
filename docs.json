@@ -16,14 +16,9 @@
         "pages": [
           "first-steps/index",
           "first-steps/protocol-mechanics",
-          "first-steps/judgment-process"
-        ]
-      },
-      {
-        "group": "Concepts",
-        "pages": [
-          "concepts/ai-red-teaming",
-          "concepts/common-attack-vectors"
+          "first-steps/judgment-process",
+          "first-steps/economic-design",
+          "first-steps/broader-applications"
         ]
       },
       {
@@ -37,6 +32,13 @@
         ]
       },
       {
+        "group": "Concepts",
+        "pages": [
+          "concepts/ai-red-teaming",
+          "concepts/common-attack-vectors"
+        ]
+      },
+      {
         "group": "Products",
         "pages": [
           "products/sui-sentinel-model"
@@ -45,7 +47,7 @@
       {
         "group": "Incentives And Rewards",
         "pages": [
-          "rewards-program"
+          "incentives/rewards-program"
         ]
       },
       {

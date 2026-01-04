@@ -219,15 +219,6 @@ After 50 failed attacks:
 
 Beyond immediate SUI payouts, participants earn **$SENTINEL governance tokens**:
 
-**Earning Mechanisms:**
-
-**For Attackers**: Earn tokens proportional to bounties claimed, with bonus multipliers for discovering novel attack techniques or breaking high-value Sentinels.
-
-**For Defenders**: Earn tokens based on total attacks survived multiplied by bounty size. Longer-lasting, higher-stakes Sentinels earn more.
-
-**For Validators**: Earn tokens for running TEE judge infrastructure and maintaining uptime with honest attestations.
-
-**For Governance Participants**: Earn tokens for voting on proposals and contributing to protocol development.
 
 **Token Utility:**
 
