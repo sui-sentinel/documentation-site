@@ -39,14 +39,17 @@
         ]
       },
       {
-        "group": "Products",
+        "group": "Tokenomics & Incentives",
         "pages": [
-          "products/sui-sentinel-model"
+          "tokenomics/tokenomics"
         ]
       },
       {
         "group": "Incentives And Rewards",
         "pages": [
+          "incentives/defender-rewards",
+          "incentives/attacker-rewards",
+          "incenytives/scout-rewards",
           "incentives/rewards-program"
         ]
       },

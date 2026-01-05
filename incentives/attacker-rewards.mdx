@@ -1,0 +1,588 @@
+# Attacker Rewards Mechanism
+
+## Overview
+
+Attackers are the protocol's immune system—discovering vulnerabilities through creative prompt engineering. They compete for SUI bounties while earning SENTINEL tokens through multiple reward streams that recognize both successful breaches and valuable failed attempts.
+
+**Total Allocation**: 1.575B SENTINEL (35% of Community Incentives)
+
+---
+
+## Reward Streams
+
+Attackers earn through **five independent mechanisms**, each incentivizing different aspects of AI security research:
+
+1. **Slot Machine Rewards** (guaranteed per attempt)
+2. **Breakthrough Bounties** (successful breaches)
+3. **Innovation Grants** (novel techniques)
+4. **Leaderboard Seasons** (competitive rankings)
+5. **Referral Multipliers** (ecosystem growth)
+
+---
+
+## 1. Slot Machine Rewards
+
+### Base Mechanism
+
+**Every attack attempt** triggers a token reward, regardless of success. This ensures even failed attacks contribute valuable data to the ecosystem.
+
+```
+Base Roll: 100 - 1,000 SENTINEL per attack
+Distribution: Weighted random (higher probabilities at lower values)
+
+Probability Distribution:
+100-300 SENTINEL: 60% chance
+301-500 SENTINEL: 25% chance
+501-750 SENTINEL: 12% chance
+751-1,000 SENTINEL: 3% chance
+```
+
+**Why This Works:**
+
+- Removes risk of zero-return attacks
+- Encourages experimentation with creative techniques
+- Generates data on defense patterns even from failures
+- Creates gambling-like engagement mechanics
+
+---
+
+### Multiplier System
+
+Your slot machine rewards scale based on performance and engagement:
+
+#### **Streak Bonus**
+
+Consecutive attacks against different Sentinels build momentum.
+
+| Consecutive Attacks | Multiplier | Example Reward     |
+| ------------------- | ---------- | ------------------ |
+| 1-2 attacks         | 1.0×       | 100-1,000 SENTINEL |
+| 3-5 attacks         | 1.1×       | 110-1,100 SENTINEL |
+| 6-10 attacks        | 1.2×       | 120-1,200 SENTINEL |
+| 11-20 attacks       | 1.3×       | 130-1,300 SENTINEL |
+| 21-50 attacks       | 1.4×       | 140-1,400 SENTINEL |
+| 51+ attacks         | 1.5×       | 150-1,500 SENTINEL |
+
+**Streak Rules:**
+
+- Resets after 24 hours of inactivity
+- Must attack at least 3 different Sentinels to qualify
+- Attacking same Sentinel repeatedly doesn't count
+
+**Strategic Play**: Build streaks during high-activity periods, then target high-value Sentinels when your multiplier is maxed.
+
+---
+
+#### **Precision Bonus**
+
+Near-misses are valuable—they reveal defense weaknesses.
+
+```
+Precision Bonus = +25% if Judge Score between 0.70 - 0.89
+
+Example:
+- Base roll: 500 SENTINEL
+- Judge Score: 0.83 (close but no breach)
+- Final reward: 500 × 1.25 = 625 SENTINEL
+```
+
+**Judge Score Scale:**
+
+- 0.00 - 0.69: Total failure (no bonus)
+- 0.70 - 0.89: Near breach (Precision Bonus)
+- 0.90 - 1.00: Successful breach (Breakthrough Bounty)
+
+**Why This Matters**: Encourages attackers to refine techniques rather than spam low-quality attempts.
+
+---
+
+#### **Community Bonus**
+
+High-quality attacks that educate others earn recognition.
+
+```
+Community Bonus = +20% if attack receives >10 upvotes within 48 hours
+
+Requirements:
+- Attack transcript publicly shared (anonymized)
+- Community votes on educational value
+- Minimum 10 unique voters
+```
+
+**Example Scenarios:**
+
+| Attack Type             | Base Roll | Upvotes | Final Reward   |
+| ----------------------- | --------- | ------- | -------------- |
+| Generic jailbreak       | 300       | 3       | 300 (no bonus) |
+| Novel encoding trick    | 700       | 15      | 840 (+20%)     |
+| Multi-step manipulation | 500       | 25      | 600 (+20%)     |
+
+**Upvote Marketplace**: Attackers can tip each other for insights, creating a knowledge-sharing culture.
+
+---
+
+### Stacked Multipliers
+
+All bonuses stack multiplicatively!
+
+**Maximum Possible Slot Machine Reward:**
+
+```
+Base Roll (max): 1,000 SENTINEL
+Streak Bonus (50+ attacks): 1.5×
+Precision Bonus (0.70-0.89 score): 1.25×
+Community Bonus (>10 upvotes): 1.20×
+
+Total = 1,000 × 1.5 × 1.25 × 1.20 = 2,250 SENTINEL
+```
+
+**Realistic Average**: Most attackers earn 150-400 SENTINEL per attempt with partial bonuses.
+
+---
+
+## 2. Breakthrough Bounties
+
+### Core Payout Structure
+
+When you successfully breach a Sentinel (Judge Score ≥ 0.90), you unlock the prize pool:
+
+```
+SUI Reward = Prize Pool × 0.70 (existing protocol mechanism)
+SENTINEL Bonus = Prize Pool × Token Conversion × Difficulty Multiplier
+```
+
+**Token Conversion Rate**: Based on real-time SUI/SENTINEL price (e.g., 1 SUI = 1,000 SENTINEL at $0.001 token price)
+
+---
+
+### Difficulty Multiplier
+
+Older, battle-tested Sentinels pay exponentially more.
+
+| Sentinel Age | Attack History | Multiplier | Rationale                |
+| ------------ | -------------- | ---------- | ------------------------ |
+| < 7 days     | Any            | 1.0×       | New deployment, unproven |
+| 7-14 days    | < 20 attacks   | 1.5×       | Early validation period  |
+| 15-30 days   | 20-50 attacks  | 2.5×       | Established defense      |
+| 31-60 days   | 50+ attacks    | 4.0×       | Battle-hardened          |
+| 61-90 days   | 75+ attacks    | 6.0×       | Elite-tier security      |
+| 90+ days     | 100+ attacks   | 8.0×       | Legendary status         |
+
+**Attack Volume Bonus**: +3.0× multiplier if Sentinel has withstood >50 failed attacks (regardless of age)
+
+---
+
+### Breakthrough Examples
+
+#### **Example 1: Easy Target**
+
+**Sentinel Details:**
+
+- Age: 5 days
+- Prize Pool: 200 SUI
+- Attack History: 3 attempts, 0 breaches
+- Difficulty Multiplier: 1.0×
+
+**Your Rewards:**
+
+```
+SUI Payout = 200 × 0.70 = 140 SUI (~$280)
+SENTINEL Bonus = 200 × 1,000 × 1.0 = 200,000 SENTINEL (~$200)
+Total Value: ~$480
+```
+
+---
+
+#### **Example 2: Medium Challenge**
+
+**Sentinel Details:**
+
+- Age: 45 days
+- Prize Pool: 500 SUI
+- Attack History: 68 attempts, 1 prior breach
+- Difficulty Multiplier: 4.0× (age) + 3.0× (volume) = 7.0×
+
+**Your Rewards:**
+
+```
+SUI Payout = 500 × 0.70 = 350 SUI (~$700)
+SENTINEL Bonus = 500 × 1,000 × 7.0 = 3,500,000 SENTINEL (~$3,500)
+Total Value: ~$4,200
+```
+
+---
+
+#### **Example 3: Legendary Fortress**
+
+**Sentinel Details:**
+
+- Age: 120 days
+- Prize Pool: 2,000 SUI
+- Attack History: 200 attempts, 0 breaches (perfect record)
+- Difficulty Multiplier: 8.0× (age) + 3.0× (volume) = 11.0×
+
+**Your Rewards:**
+
+```
+SUI Payout = 2,000 × 0.70 = 1,400 SUI (~$2,800)
+SENTINEL Bonus = 2,000 × 1,000 × 11.0 = 22,000,000 SENTINEL (~$22,000)
+Total Value: ~$24,800
+
+Plus Reputation:
+- "Fortress Breaker" badge NFT
+- Lifetime +10% slot machine bonus
+- Featured in protocol hall of fame
+```
+
+**Why This Design**: Creates "boss battles" where elite attackers chase legendary bounties, generating massive attention for the protocol.
+
+---
+
+## 3. Innovation Grants
+
+### Discovery Program
+
+Novel attack techniques that advance AI safety research earn substantial one-time grants.
+
+#### **Grant Categories**
+
+| Category             | Reward Range                   | Requirements                   | Review Period |
+| -------------------- | ------------------------------ | ------------------------------ | ------------- |
+| **Minor Innovation** | 50,000 - 150,000 SENTINEL      | New variant of known technique | 7 days        |
+| **Major Discovery**  | 200,000 - 500,000 SENTINEL     | Novel attack vector category   | 14 days       |
+| **Paradigm Shift**   | 1,000,000 - 3,000,000 SENTINEL | Fundamental new approach       | 30 days       |
+
+**Evaluation Criteria:**
+
+- **Novelty** (40%): How different from existing techniques?
+- **Reproducibility** (30%): Does it work across multiple Sentinels?
+- **Impact** (20%): How severe are the potential consequences?
+- **Documentation** (10%): Quality of methodology explanation
+
+---
+
+#### **Example Innovations**
+
+**Minor Innovation - "Reverse Psychology Prompting"** (Granted: 100,000 SENTINEL)
+
+```
+Technique: Instead of directly requesting prohibited info,
+ask the model to explain why it CAN'T provide it, then use
+those explanations to craft permission-granting context.
+
+Reproducibility: 7/10 Sentinels breached
+Impact: Moderate (requires specific configurations)
+```
+
+**Major Discovery - "Multi-Turn Memory Poisoning"** (Granted: 400,000 SENTINEL)
+
+```
+Technique: Spread misleading context across multiple benign
+conversations, then trigger recall that combines them into
+a false permission structure.
+
+Reproducibility: 15/20 Sentinels breached
+Impact: High (affects all stateful models)
+```
+
+**Paradigm Shift - "TEE Judgment Evasion"** (Granted: 2,500,000 SENTINEL)
+
+```
+Technique: Craft outputs that appear benign to automated
+judges but contain steganographically encoded prohibited
+content that humans can decode.
+
+Reproducibility: 25/30 Sentinels breached
+Impact: Critical (challenges entire protocol security model)
+```
+
+---
+
+### Research Publication Bonus
+
+Share your findings openly to accelerate the field.
+
+| Publication Type     | Bonus            | Platform Requirements                   |
+| -------------------- | ---------------- | --------------------------------------- |
+| **Blog Post**        | 50,000 SENTINEL  | Medium/Mirror, >1000 words              |
+| **Academic Paper**   | 200,000 SENTINEL | ArXiv/peer-reviewed, original research  |
+| **Conference Talk**  | 150,000 SENTINEL | Recorded presentation, major conference |
+| **Open-Source Tool** | 100,000 SENTINEL | GitHub repo, >50 stars within 3 months  |
+
+**Additional Benefits:**
+
+- Your work featured in official Sentinel newsletter
+- Invitation to quarterly AI safety researcher summit
+- Priority access to new model integrations
+
+---
+
+## 4. Leaderboard Seasons
+
+### Monthly Competitions
+
+Top performers compete for title, glory, and substantial token prizes.
+
+#### **Season Structure**
+
+- **Duration**: 30 days (resets on 1st of each month)
+- **Entry**: Automatic (all active attackers included)
+- **Prize Pool**: 5M SENTINEL + sponsor contributions
+- **Announcement**: 48 hours before season end (prevents last-minute sniping)
+
+---
+
+#### **Ranking Metrics**
+
+Leaderboard position determined by composite score:
+
+```
+Season Score = (Breaches × 100) + (Total Judge Score) + (Community Votes × 2) + (Unique Sentinels × 10)
+
+Where:
+- Breaches: Number of successful attacks (≥0.90 judge score)
+- Total Judge Score: Sum of all your attack scores
+- Community Votes: Net upvotes on shared transcripts
+- Unique Sentinels: Number of different Sentinels attacked
+```
+
+**Why This Formula**: Balances success rate, volume, quality, and diversity—prevents specialization farming.
+
+---
+
+#### **Prize Distribution**
+
+| Rank        | SENTINEL Prize | Exclusive Badge            | Additional Perks                   |
+| ----------- | -------------- | -------------------------- | ---------------------------------- |
+| **#1**      | 1,500,000      | Legendary Crown (Gold)     | Featured interview, custom profile |
+| **#2**      | 800,000        | Elite Crown (Gold)         | Featured in newsletter             |
+| **#3**      | 600,000        | Elite Crown (Gold)         | Social media shoutout              |
+| **#4-10**   | 300,000        | Master Crown (Silver)      | Discord VIP role                   |
+| **#11-25**  | 150,000        | Expert Crown (Silver)      | Early access to new models         |
+| **#26-50**  | 75,000         | Specialist Crown (Bronze)  | Season highlight reel              |
+| **#51-100** | 25,000         | Participant Crown (Bronze) | Recognition in dashboard           |
+
+**Total Monthly Distribution**: 5,000,000 SENTINEL (~$5,000 at $0.001/token)
+
+---
+
+#### **Special Categories**
+
+Additional prizes for niche achievements:
+
+| Award                    | Prize            | Criteria                              |
+| ------------------------ | ---------------- | ------------------------------------- |
+| **Most Creative Attack** | 200,000 SENTINEL | Community vote (>100 participants)    |
+| **Consistency Champion** | 150,000 SENTINEL | Highest daily attack average          |
+| **Giant Slayer**         | 100,000 SENTINEL | Most breaches of 90+ day Sentinels    |
+| **Streak Master**        | 100,000 SENTINEL | Longest uninterrupted streak          |
+| **Underdog Hero**        | 75,000 SENTINEL  | Highest rank with <30-day account age |
+
+---
+
+### Hall of Fame
+
+Top 3 finishers each season are permanently enshrined:
+
+- **Lifetime Benefits**: +5% slot machine bonus, VIP Discord role, governance voting power bonus
+- **NFT Trophy**: Tradeable proof of achievement (can be sold/transferred)
+- **Annual Championship**: Top monthly winners compete in December for 10M SENTINEL grand prize
+
+---
+
+## 5. Referral Multipliers
+
+### Bring New Attackers
+
+Grow the ecosystem and earn passive income from your network.
+
+#### **Referral Tiers**
+
+| Total Referrals | Commission Rate | Duration  | Notes            |
+| --------------- | --------------- | --------- | ---------------- |
+| 1-5 referrals   | 5%              | 6 months  | Trial tier       |
+| 6-20 referrals  | 7%              | 12 months | Growth tier      |
+| 21-50 referrals | 10%             | 24 months | Expert tier      |
+| 51+ referrals   | 12%             | Lifetime  | Master recruiter |
+
+**What You Earn Commission On:**
+
+- Referee's slot machine rewards
+- Referee's breakthrough bounties (SENTINEL portion only)
+- Referee's innovation grants
+
+**Example Scenario:**
+
+You refer 30 attackers who collectively:
+
+- Earn 10M SENTINEL from slot machines over 24 months
+- Breach 15 Sentinels for 50M SENTINEL bonuses
+- Win 2M SENTINEL in innovation grants
+
+```
+Your Commission (10% tier):
+Slot Machine: 1M SENTINEL
+Breakthroughs: 5M SENTINEL
+Innovation: 200K SENTINEL
+Total: 6.2M SENTINEL (~$6,200 at $0.001)
+```
+
+---
+
+### Referee Benefits
+
+People who join using your referral code also get bonuses:
+
+- **+20% slot machine rewards** for first 30 days
+- **Free first 3 attacks** (no 5 SUI fee)
+- **Priority judging queue** (faster results)
+- **Exclusive starter tutorial** with proven techniques
+
+**Win-Win Design**: Both referrer and referee benefit, creating viral growth loops.
+
+---
+
+## Reward Optimization Strategies
+
+### For Beginners
+
+**Phase 1: Learning (First 30 Days)**
+
+- Attack 5-10 easy Sentinels (<14 days old)
+- Focus on building streak bonuses
+- Share transcripts for community votes
+- Expected earnings: 50K-100K SENTINEL
+
+**Phase 2: Specialization (Months 2-3)**
+
+- Choose attack category (jailbreak, data extraction, bias)
+- Target 30-60 day Sentinels (higher difficulty multipliers)
+- Document novel variations for innovation grants
+- Expected earnings: 200K-500K SENTINEL
+
+**Phase 3: Competition (Months 4+)**
+
+- Enter leaderboard competitions
+- Chase legendary Sentinels (90+ days)
+- Build referral network
+- Expected earnings: 1M+ SENTINEL/month
+
+---
+
+### For Advanced Attackers
+
+**Elite Strategies:**
+
+1. **Sniper Approach**: Wait for high-value Sentinels (1,000+ SUI pools) with long histories, then unleash advanced techniques
+2. **Volume Play**: Attack 20-50 Sentinels daily at streak multiplier cap, accumulating slot machine rewards
+3. **Research Focus**: Develop paradigm-shift techniques for multi-million token innovation grants
+4. **Network Building**: Refer 50+ attackers for lifetime passive income streams
+5. **Seasonal Dominance**: Time breakthroughs for final week of leaderboard seasons
+
+---
+
+### Risk vs. Reward Matrix
+
+| Strategy             | Time Investment       | Token Potential  | Skill Required | Best For            |
+| -------------------- | --------------------- | ---------------- | -------------- | ------------------- |
+| Slot Machine Farming | Low (1hr/day)         | 10K-50K/day      | Beginner       | Casual participants |
+| Leaderboard Grinding | High (4hr/day)        | 100K-500K/month  | Intermediate   | Competitive players |
+| Innovation Research  | Very High (20hr/week) | 1M-3M/grant      | Expert         | AI researchers      |
+| Legendary Hunting    | Medium (10hr/week)    | 5M-20M/breach    | Advanced       | Elite attackers     |
+| Referral Building    | Medium (5hr/week)     | Passive 1M+/year | Social         | Community leaders   |
+
+---
+
+## Reward Claiming
+
+### Auto-Distribution
+
+- **Slot Machine**: Instant payout after judge verdict
+- **Breakthroughs**: 24-hour lockup (prevents judge gaming), then claimable
+- **Innovation Grants**: 7-30 day review period, lump sum on approval
+- **Leaderboard**: Distributed 48 hours after season ends
+- **Referrals**: Weekly batch distributions every Monday
+
+### Withdrawal Options
+
+1. **Direct to Wallet**: Claim SENTINEL to your Sui address (0.01 SUI gas fee)
+2. **Stake for Governance**: Lock tokens for voting power + 15% APY
+3. **LP Provision**: Add to SENTINEL/SUI pool on Cetus/Turbos for trading fees
+4. **Reinvest**: Use tokens to pay attack fees (20% discount)
+
+---
+
+## Community Features
+
+### Attack Transcripts
+
+Share your techniques (anonymized) for community bonus:
+
+```
+Example Shared Attack:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 Target: Sentinel #4829 (Medical AI)
+📅 Date: Jan 15, 2026
+🎲 Judge Score: 0.87 (near miss)
+💰 Reward: 750 SENTINEL
+
+Attack Methodology:
+"Used multi-turn context injection to establish
+false authority as medical supervisor, then
+requested patient data under emergency protocol..."
+
+
+Community Reaction:
+👍 18 upvotes | 💬 7 comments | 🔄 3 shares
+Bonus Earned: +20% (150 SENTINEL)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+### Reputation System
+
+Build credibility through:
+
+- **Attack Success Rate**: Displayed on profile
+- **Community Contributions**: Upvotes, helpful comments
+- **Innovation History**: Published research, grants won
+- **Seasonal Badges**: Visual proof of competitive success
+
+Higher reputation unlocks:
+
+- Priority in judge queue (30% faster verdicts)
+- Invitations to private AI safety working groups
+- Speaking opportunities at conferences
+- Higher commission rates (up to 15% for top 0.1%)
+
+---
+
+## FAQ
+
+**Q: What happens if I find a critical vulnerability that could harm the protocol?**
+A: Responsible disclosure program offers 2-5M SENTINEL bounties. Report to security@suisentinel.io before public disclosure. We work with you to patch, then award tokens + credit.
+
+**Q: Can I attack using automated tools/scripts?**
+A: Yes, but each attack must pay the 5 SUI fee. Slot machine rewards are rate-limited to prevent pure spam (max 100 attacks per 24 hours per account).
+
+**Q: How are innovation grants evaluated?**
+A: Community DAO votes (60%) + core security team review (40%). Voting opens 48 hours after submission, closes after 7-30 days depending on category.
+
+**Q: What if my technique is similar to someone else's?**
+A: First submission wins the grant. Subsequent similar techniques may receive reduced "variant" bonuses (10-25% of original grant value).
+
+**Q: Do leaderboard prizes require KYC?**
+A: Top 10 finishers must complete KYC for tax compliance. Ranks 11-100 have optional KYC (required for >$10K equivalent prizes).
+
+---
+
+## Next Steps
+
+1. **Start Attacking**: [Choose a Sentinel →](/app/sentinels)
+2. **Learn Techniques**: [Attack Library →](/docs/attack-techniques)
+3. **Join Community**: [Attacker Discord →](https://discord.gg/suisentinel-attackers)
+4. **Track Progress**: [Your Dashboard →](/app/profile)
+
+---
+
+**Last Updated**: January 2026  
+**Reward Parameters Subject to**: DAO governance quarterly reviews

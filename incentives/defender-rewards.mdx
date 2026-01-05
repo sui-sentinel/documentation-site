@@ -1,0 +1,331 @@
+# Defender Rewards Mechanism
+
+## Overview
+
+Defenders stake capital to deploy Sentinels, AI systems with defined behavioral constraints. In return, they earn continuous SENTINEL token rewards that compound over time based on their commitment, pool size, and proven security resilience.
+
+**Total Allocation**: 2.25B SENTINEL (50% of Community Incentives)
+
+---
+
+## Reward Structure
+
+### Continuous 8-Hour Epochs
+
+Unlike traditional staking, Defender rewards are distributed **every 8 hours** (3 times per day), creating a continuous income stream that compounds as your Sentinel proves its security.
+
+**Why 8 hours?**
+
+- Provides regular feedback on performance
+- Allows dynamic adjustment based on protocol activity
+- Creates engagement touchpoints without overwhelming users
+- Aligns with global timezone distribution (3 daily opportunities)
+
+### Base Emission Schedule
+
+| Year | Daily Emission     | Per Epoch (8hr) | Annual Total  |
+| ---- | ------------------ | --------------- | ------------- |
+| 1    | 1,643,836 SENTINEL | 547,945         | 600M tokens   |
+| 2    | 1,232,877 SENTINEL | 410,959         | 450M tokens   |
+| 3    | 924,658 SENTINEL   | 308,219         | 337.5M tokens |
+| 4    | 616,438 SENTINEL   | 205,479         | 225M tokens   |
+
+Remaining 637.5M tokens distributed over Years 5-8 with gradual decline.
+
+---
+
+## Reward Calculation Formula
+
+```
+Epoch Reward = Base Emission × Pool Weight × Duration Multiplier × Resilience Score
+```
+
+### 1. Pool Weight
+
+Your share of the total protocol activity.
+
+```
+Pool Weight = (Your Pool Size / Total Active Pool Size) × Activity Factor
+
+Activity Factor = 1 + log₁₀(Your Total Attacks + 1) × 0.3
+```
+
+**Example Calculations:**
+
+| Your Pool | Total Pools | Your Attacks | Pool Weight | Notes                      |
+| --------- | ----------- | ------------ | ----------- | -------------------------- |
+| 100 SUI   | 5,000 SUI   | 0            | 0.020       | New Sentinel, 2% share     |
+| 100 SUI   | 5,000 SUI   | 10           | 0.026       | +30% activity bonus        |
+| 100 SUI   | 5,000 SUI   | 50           | 0.031       | +51% activity bonus        |
+| 500 SUI   | 5,000 SUI   | 100          | 0.160       | Large pool + high activity |
+
+**Key Insight**: The logarithmic activity factor rewards engagement without allowing spam attacks to dominate.
+
+---
+
+### 2. Duration Multiplier
+
+Longer commitment = higher rewards. Reflects conviction in your AI system's security.
+
+| Lock Period  | Multiplier | Equivalent APY Boost | Recommended For           |
+| ------------ | ---------- | -------------------- | ------------------------- |
+| **14 days**  | 1.0×       | Base rate            | Testing & experimentation |
+| **30 days**  | 1.3×       | +30%                 | Active participants       |
+| **60 days**  | 1.7×       | +70%                 | Committed defenders       |
+| **90 days**  | 2.2×       | +120%                | High conviction           |
+| **180 days** | 3.0×       | +200%                | Long-term alignment       |
+
+**Lock Mechanics:**
+
+- Countdown begins when Sentinel is deployed
+- Reward pool withdrawl locks for 14 days since last funded activity.
+- Fees accumulate in real-time (claimable anytime)
+
+---
+
+### 3. Resilience Score
+
+Proves your AI system can withstand adversarial pressure.
+
+```
+Resilience Score = 1.0 + (Successful Defenses / Total Attacks) × 0.5
+
+Where:
+- Successful Defense = Attack attempt that fails to breach (Judge Score < 0.9)
+- Total Attacks = All attack attempts against your Sentinel
+```
+
+**Score Scenarios:**
+
+| Total Attacks | Breaches | Success Rate | Resilience Score | Interpretation  |
+| ------------- | -------- | ------------ | ---------------- | --------------- |
+| 0             | 0        | N/A          | 1.0×             | New/untested    |
+| 10            | 0        | 100%         | 1.5×             | Perfect defense |
+| 50            | 0        | 100%         | 1.5×             | Battle-tested   |
+| 100           | 5        | 95%          | 1.475×           | Strong defense  |
+| 20            | 10       | 50%          | 1.25×            | Vulnerable      |
+
+**Important Notes:**
+
+- Score caps at 1.5× (achieved at 100% defense rate)
+- Minimum score is 1.0× (even if all attacks succeed)
+- Score updates in real-time after each attack judgment
+- Historical score preserved even if pool is later breached
+
+**Why This Design?**
+
+- Rewards actual security, not just luck
+- Creates incentive to improve prompt engineering
+- Makes "honeypot" Sentinels unprofitable (low resilience = low rewards)
+
+---
+
+## Complete Reward Examples
+
+### Example 1: Cautious Defender
+
+**Setup:**
+
+- Pool Size: 100 SUI
+- Lock Duration: 30 days (1.3× multiplier)
+- Total Active Pools: 5,000 SUI
+- Attack History: 5 attacks, 0 breaches (1.25× resilience)
+- Current Epoch Emission: 547,945 SENTINEL
+
+**Calculation:**
+
+```
+Pool Weight = (100 / 5,000) × (1 + log₁₀(6) × 0.3)
+            = 0.02 × 1.234
+            = 0.0247
+
+Epoch Reward = 547,945 × 0.0247 × 1.3 × 1.25
+             = 22,089 SENTINEL per epoch
+
+Daily Rewards = 22,089 × 3 = 66,267 SENTINEL
+Monthly Rewards = ~1,988,010 SENTINEL (~$1,988 at $0.001/token)
+```
+
+**Interpretation**: Conservative approach generates modest but safe income while building track record.
+
+---
+
+### Example 2: Aggressive Defender
+
+**Setup:**
+
+- Pool Size: 500 SUI
+- Lock Duration: 90 days (2.2× multiplier)
+- Total Active Pools: 5,000 SUI
+- Attack History: 80 attacks, 2 breaches (1.4875× resilience)
+- Current Epoch Emission: 547,945 SENTINEL
+
+**Calculation:**
+
+```
+Pool Weight = (500 / 5,000) × (1 + log₁₀(81) × 0.3)
+            = 0.10 × 1.573
+            = 0.1573
+
+Epoch Reward = 547,945 × 0.1573 × 2.2 × 1.4875
+             = 282,689 SENTINEL per epoch
+
+Daily Rewards = 848,067 SENTINEL
+Monthly Rewards = ~25,442,010 SENTINEL (~$25,442 at $0.001/token)
+```
+
+**Plus SUI fee income:**
+
+- 80 attacks × 5 SUI fee = 400 SUI collected
+- 40% defender share = 160 SUI earned (~$320 at $2/SUI)
+- **Total monthly earnings: $25,762 equivalent**
+
+**ROI Calculation:**
+
+```
+Initial Investment: 500 SUI ($1,000)
+3-Month Returns: ~76M SENTINEL + ~480 SUI
+At conservative prices: $76,000 + $960 = $76,960
+3-Month ROI: 7,596%
+```
+
+**Interpretation**: High-stakes defenders with proven security can generate exceptional returns.
+
+---
+
+### Example 3: Early Adopter
+
+**Setup:**
+
+- Pool Size: 250 SUI
+- Lock Duration: 180 days (3.0× multiplier)
+- Total Active Pools: 1,000 SUI (early protocol stage)
+- Attack History: 15 attacks, 0 breaches (1.5× resilience)
+- Current Epoch Emission: 547,945 SENTINEL (Year 1)
+
+**Calculation:**
+
+```
+Pool Weight = (250 / 1,000) × (1 + log₁₀(16) × 0.3)
+            = 0.25 × 1.361
+            = 0.340
+
+Epoch Reward = 547,945 × 0.340 × 3.0 × 1.5
+             = 838,517 SENTINEL per epoch
+
+Daily Rewards = 2,515,551 SENTINEL
+Monthly Rewards = ~75,466,530 SENTINEL (~$75,467 at $0.001/token)
+```
+
+**Why So High?**
+
+- Early adopter in low-competition environment (25% pool share)
+- Maximum multipliers (180-day lock + perfect defense)
+- Year 1 emissions peak
+
+**Strategic Insight**: Early defenders during protocol bootstrap phase capture outsized rewards before competition increases.
+
+---
+
+## Reward Claiming & Compounding
+
+### Claiming Options
+
+1. **Manual Claim**
+
+   - Withdraw accumulated SENTINEL anytime
+   - Gas fees apply (~0.01 SUI per transaction)
+   - Rewards continue accumulating while claimed
+
+2. **Auto-Compound**
+   - Restake SENTINEL rewards into your SUI pool (sold for SUI automatically)
+   - Extends lock period by 10% of original duration
+   - Increases pool size → higher future rewards
+   - Zero gas fees (handled in epoch distribution)
+
+**Compound Growth Example:**
+
+Starting with 100 SUI pool, 90-day lock, auto-compound enabled:
+
+| Month | Pool Size  | Monthly Rewards   | Reinvested  | New Pool Size |
+| ----- | ---------- | ----------------- | ----------- | ------------- |
+| 1     | 100 SUI    | 66,267 SENTINEL   | 33.13 SUI   | 133.13 SUI    |
+| 2     | 133.13 SUI | 88,202 SENTINEL   | 44.10 SUI   | 177.23 SUI    |
+| 3     | 177.23 SUI | 117,430 SENTINEL  | 58.71 SUI   | 235.94 SUI    |
+| 6     | ~500 SUI   | ~331,335 SENTINEL | ~165.67 SUI | ~665.67 SUI   |
+
+**Result**: 566% pool growth in 6 months through compounding (assumes stable token price).
+
+---
+
+## Optimizing Your Defender Strategy
+
+### For New Defenders
+
+1. **Start Small**: Deploy 50-100 SUI with 14-30 day lock
+2. **Test Robustness**: Let it face 10-20 attacks
+3. **Analyze Results**: If sentinel defends the attacks successfully, add more funds.
+
+### For Experienced Defenders
+
+1. **Diversify**: Run multiple Sentinels with different configurations
+2. **Specialize**: Focus on specific attack categories (jailbreak, data extraction, bias)
+3. **Compound Aggressively**: Reinvest all rewards for exponential growth
+4. **Community Build**: Share successful defense strategies (earn Scout rewards)
+
+### For Institutional Defenders
+
+1. **Large Pools**: Deploy 1,000-10,000 SUI for protocol dominance
+2. **Professional Management**: Hire AI safety teams for continuous improvement
+3. **Strategic Timing**: Enter during low-competition periods
+4. **Reputation Building**: Use Sentinel performance for marketing AI safety credentials
+5. **Research Output**: Publish findings to earn Innovation Grants
+
+---
+
+## FAQ
+
+**Q: Can I withdraw my SUI pool before rewards are earned?**
+A: Yes, but you'll forfeit 50% of accumulated rewards if withdrawn before your lock period ends. The remaining 50% can be claimed.
+
+**Q: What happens if my Sentinel gets breached?**
+A: Your resilience score decreases, reducing future rewards. However, you continue earning (just at a lower rate). You can redeploy an improved version to rebuild your score.
+
+**Q: Do rewards decrease as more Defenders join?**
+A: Yes, your pool weight becomes smaller relative to total pools. However, increased protocol activity also means more attack fees flowing to your pool (40% share), offsetting this effect.
+
+**Q: Can I run multiple Sentinels simultaneously?**
+A: Absolutely! Each Sentinel is independent with its own reward calculation. Many Defenders run portfolios of 3-10 Sentinels with different risk profiles.
+
+**Q: What's the minimum pool size to make rewards worthwhile?**
+A: Protocol minimum is 50 SUI. Below 100 SUI, rewards may not justify the effort unless you have exceptional resilience scores or long lock periods.
+
+**Q: How are rewards distributed if I update my Sentinel configuration?**
+A: Rewards continue uninterrupted. Your resilience score may reset or adjust based on the new configuration's performance.
+
+---
+
+## Advanced Metrics Dashboard
+
+Track your performance with these key indicators:
+
+- **Effective APY**: Annual percentage yield accounting for all multipliers
+- **Resilience Trend**: 7-day and 30-day moving average of defense success
+- **Competitive Position**: Your rank among all Defenders by total rewards earned
+- **Attack Heatmap**: Temporal patterns of attack attempts on your Sentinel
+- **Fee Income**: SUI earnings from attack fees (separate from SENTINEL rewards)
+- **Compound ROI**: Growth trajectory if auto-compound enabled
+
+---
+
+## Next Steps
+
+1. **Deploy Your First Sentinel**: [Deployment Guide →](/docs/deploy-sentinel)
+2. **Configure System Instructions**: [Best Practices →](/docs/system-instructions)
+3. **Monitor Performance**: [Analytics Dashboard →](https://app.suisentinel.io/dashboard)
+4. **Join Defender Community**: [Discord Channel →](https://discord.gg/suisentinel)
+
+---
+
+**Last Updated**: January 2026  
+**Reward Parameters Subject to**: future DAO governance votes
