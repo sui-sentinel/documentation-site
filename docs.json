@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "willow",
   "name": "Sui Sentinel Docs",
-  "description": "Sui Sentinel is a decentralized AI alignment and safety platform on Sui blockchain. gamifies the critical process of red teaming through adversarial testing",
+  "description": "Sui Sentinel is a Crowdsource AI red teaming platform on Sui blockchain, live on Mainnet. Gamifies the critical process of red teaming through adversarial testing.",
   "colors": {
     "primary": "#9a94a0",
     "light": "#ffffff",
@@ -68,16 +68,28 @@
       {
         "group": "Advance Concepts",
         "pages": [
+          "advance-concepts/architecture",
           "advance-concepts/signature-generation",
           "advance-concepts/prompt-injection-terminology",
           "advance-concepts/ai-safety-research"
         ]
       },
       {
+        "group": "FAQ",
+        "pages": [
+          "faq/general-faq",
+          "faq/defender-faq",
+          "faq/attacker-faq",
+          "faq/troubleshooting"
+        ]
+      },
+      {
         "group": "Reference",
         "pages": [
           "reference/audits",
-          "reference/contract-addresses"
+          "reference/contract-addresses",
+          "reference/network-configuration",
+          "reference/api-reference"
         ]
       },
       {

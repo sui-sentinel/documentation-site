@@ -1,0 +1,165 @@
+---
+title: 'Network Configuration'
+description: 'How to configure Sui Sentinel for Mainnet and Testnet environments'
+---
+
+# Network Configuration
+
+Sui Sentinel supports both **Mainnet** (production) and **Testnet** (development) environments. This guide explains how to configure your integration for each network.
+
+---
+
+## Quick Reference
+
+| Network | Status | Use Case |
+|---------|--------|----------|
+| **Mainnet** | 🟢 Live | Production deployments, real assets |
+| **Testnet** | 🟡 Available | Development, testing, experimentation |
+
+---
+
+## Mainnet Configuration
+
+Mainnet is the production environment where real transactions occur with actual SUI and SENTINEL tokens.
+
+### Connection Details
+
+```typescript
+const SUI_MAINNET_CONFIG = {
+  APP_PACKAGE_ID: '0x88b83f36dafcd5f6dcdcf1d2cb5889b03f61264ab3cee9cae35db7aa940a21b7',
+  MODULE_NAME: 'sentinel',
+  OTW_NAME: 'SENTINEL',
+  AGENT_REGISTRY: '0xc47564f5f14c12b31e0dfa1a3dc99a6380a1edf8929c28cb0eaa3359c8db36ac',
+  ENCLAVE_OBJECT_ID: '0xfb1261aeb9583514cb1341a548a5ec12d1231bd96af22215f1792617a93e1213',
+  PROTOCOL_CONFIG_OBJECT_ID: '0x2fa4fa4a1dd0498612304635ff9334e1b922e78af325000e9d9c0e88adea459f',
+  SENTINEL_COIN_TYPE: "0x66aaa74fecd25cb19b7576e101b25fd3a844e6b9f678421429d0d49d55e0fca0::sentinel::SENTINEL",
+}
+```
+
+### RPC Endpoints
+
+- **Primary**: `https://fullnode.mainnet.sui.io`
+- **Backup**: Use a dedicated RPC provider like [QuickNode](https://www.quicknode.com/chains/sui) or [Alchemy](https://www.alchemy.com/sui) for production applications
+
+### Explorer
+
+View transactions and objects on [SuiVision Mainnet](https://suivision.xyz)
+
+---
+
+## Testnet Configuration
+
+Testnet is the development environment for testing your integration without risking real assets.
+
+### Connection Details
+
+```typescript
+const SUI_TESTNET_CONFIG = {
+  APP_PACKAGE_ID: '0x69615c3a87ad8288e78cc4c6482d2e5921ce71bf56ba56ba757b01ac439cea76',
+  MODULE_NAME: 'sentinel',
+  OTW_NAME: 'SENTINEL',
+  AGENT_REGISTRY: '0x29e941ef8ab71e09d23336f34c7535983586e071eee107f927e3dcffa8cb8fbe',
+  ENCLAVE_OBJECT_ID: '0x667e7657ad509710c42291d36e0a6d96c0f00db0469a8d94120d9d0ff137752d',
+  PROTOCOL_CONFIG_OBJECT_ID: '0x168ce294a3b3ca3456f505ae0fd58fe0bbe660725b7fce41c3263f3aade0094d',
+  SENTINEL_COIN_TYPE: "0xb0a3b08be99cb5becf1787e565cdd027edc40791df89ca4a603ba7d1575b21e9::sentinel::SENTINEL",
+}
+```
+
+### RPC Endpoints
+
+- **Primary**: `https://fullnode.testnet.sui.io`
+
+### Faucet
+
+Get test SUI from the [Sui Testnet Faucet](https://docs.sui.io/build/faucet)
+
+### Explorer
+
+View transactions and objects on [SuiVision Testnet](https://testnet.suivision.xyz)
+
+---
+
+## Environment-Specific Setup
+
+### Frontend Integration
+
+When building a frontend application, use environment variables to switch between networks:
+
+```typescript
+// config.ts
+const APP_NETWORK = process.env.NEXT_PUBLIC_APP_NETWORK === 'testnet' ? 'testnet' : 'mainnet'
+
+const SUI_MAINNET_CONFIG = { /* ... */ }
+const SUI_TESTNET_CONFIG = { /* ... */ }
+
+export const SUI_CONFIG = APP_NETWORK === 'mainnet' ? SUI_MAINNET_CONFIG : SUI_TESTNET_CONFIG
+export const EXPLORER_BASE_URL = APP_NETWORK === 'mainnet' ? 'https://suivision.xyz' : 'https://testnet.suivision.xyz'
+```
+
+```env
+# .env.local for development
+NEXT_PUBLIC_APP_NETWORK=testnet
+
+# .env.production for production
+NEXT_PUBLIC_APP_NETWORK=mainnet
+```
+
+### Wallet Configuration
+
+Ensure your wallet is connected to the correct network:
+
+```typescript
+import { useWallet } from '@suiet/wallet-kit'
+
+function NetworkCheck() {
+  const { chain } = useWallet()
+  
+  const isCorrectNetwork = chain?.name?.toLowerCase().includes(APP_NETWORK)
+  
+  if (!isCorrectNetwork) {
+    return <div>Please switch to {APP_NETWORK}</div>
+  }
+  
+  return <div>Connected to {APP_NETWORK}</div>
+}
+```
+
+---
+
+## Best Practices
+
+<Check>Always test on Testnet first</Check>
+Before deploying to Mainnet, thoroughly test your Sentinel configuration and attack/defense strategies on Testnet.
+
+<Warning>Never use Mainnet funds for testing</Warning>
+Mainnet transactions use real SUI that cannot be recovered. Always use Testnet for experimentation.
+
+<Info>Monitor gas prices</Info>
+Mainnet gas prices fluctuate based on network congestion. Testnet has more predictable (and free) gas costs.
+
+---
+
+## Troubleshooting
+
+### Common Issues
+
+| Issue | Solution |
+|-------|----------|
+| "Package not found" | Verify you're connected to the correct network |
+| "Insufficient balance" | For Mainnet: ensure you have real SUI. For Testnet: request from faucet |
+| "Transaction failed" | Check the explorer for detailed error messages |
+| "Object not found" | The object may not exist on your current network |
+
+### Network Status
+
+Check the official Sui network status:
+- [Sui Mainnet Status](https://status.sui.io/)
+- [Sui Discord](https://discord.gg/sui) for real-time updates
+
+---
+
+## Additional Resources
+
+- [Contract Addresses](/reference/contract-addresses) — Complete address reference
+- [Sui Documentation](https://docs.sui.io/) — Official Sui network docs
+- [SuiVision Explorer](https://suivision.xyz) — Browse Mainnet transactions
