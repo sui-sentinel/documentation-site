@@ -112,9 +112,9 @@
   "logo": {
     "light": "/logo/light.png",
     "dark": "/logo/dark.png",
-    "href": "https://docs.suisentinel.xyz/introduction"
+    "href": "/first-steps"
   },
-"thumbnails": {
+  "thumbnails": {
     "background": "/images/og-image-v5.png"
   },
   "background": {
