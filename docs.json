@@ -102,8 +102,8 @@
     "dark": "/logo/dark.png",
     "href": "https://docs.suisentinel.xyz/introduction"
   },
-  "thumbnails": {
-    "background": "/images/thumbnail.png"
+"thumbnails": {
+    "background": "/images/og-image-v5.png"
   },
   "background": {
     "decoration": "grid"
