@@ -73,8 +73,8 @@
     "dark": "/logo/dark.png",
     "href": "/first-steps"
   },
-  "thumbnails": {
-    "background": "/images/og-image-v5.png"
+  "metadata": {
+    "og:image": "https://docs.suisentinel.xyz/images/og-image-v5.png"
   },
   "background": {
     "decoration": "grid"
