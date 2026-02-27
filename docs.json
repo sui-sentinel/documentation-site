@@ -23,9 +23,9 @@
       {
         "group": "Incentives And Rewards",
         "pages": [
-          "incentives/defender-rewards",
-          "incentives/attacker-rewards",
-          "incentives/ambassador-rewards"
+          "rewards/defender-rewards",
+          "rewards/attacker-rewards",
+          "rewards/ambassador-rewards"
         ]
       },
       {
@@ -49,12 +49,6 @@
         "group": "Tokenomics & Incentives",
         "pages": [
           "tokenomics/tokenomics"
-        ]
-      },
-      {
-        "group": "Vision And Opportunity",
-        "pages": [
-          "vision-and-opportunity/vision-and-opportunity"
         ]
       },
       {
