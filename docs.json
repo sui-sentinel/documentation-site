@@ -73,8 +73,10 @@
     "dark": "/logo/dark.png",
     "href": "/first-steps"
   },
-  "metadata": {
-    "og:image": "https://docs.suisentinel.xyz/images/og-image-v5.png"
+  "seo": {
+    "metatags": {
+      "og:image": "https://docs.suisentinel.xyz/images/og-image-v5.png"
+    }
   },
   "background": {
     "decoration": "grid"
