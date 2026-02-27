@@ -78,6 +78,9 @@
       "og:image": "https://docs.suisentinel.xyz/images/og-image-v5.png"
     }
   },
+  "thumbnails": {
+    "background": "/images/og_bg.png"
+  },
   "background": {
     "decoration": "grid"
   },
