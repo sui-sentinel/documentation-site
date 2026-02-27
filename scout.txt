@@ -158,7 +158,7 @@ Subject to cap: Max 2,500 SENTINEL/month (25% of your direct commission from tha
 
 **Tracking Dashboard**
 
-- Referral source attribution (Twitter, Discord, blog, etc.)
+- Referral source attribution (Twitter, blog, etc.)
 - Conversion rates by channel
 - Lifetime value of each referee
 - Commission payment history
@@ -318,7 +318,7 @@ Dedicated community leaders who consistently contribute earn monthly stipends.
 
 | Tier        | Monthly Stipend  | Weekly Commitment | Responsibilities                                              |
 | ----------- | ---------------- | ----------------- | ------------------------------------------------------------- |
-| **Bronze**  | 25,000 SENTINEL  | 5-10 hours        | Active in Discord, moderate discussions, onboard new users    |
+| **Bronze**  | 25,000 SENTINEL  | 5-10 hours        | Active in moderate discussions, onboard new users    |
 | **Silver**  | 60,000 SENTINEL  | 10-20 hours       | Host events, create content, manage regional community        |
 | **Gold**    | 125,000 SENTINEL | 20-30 hours       | Strategic initiatives, partnerships, governance participation |
 | **Diamond** | 250,000 SENTINEL | Full-time         | Protocol representative, ecosystem development, speaking      |

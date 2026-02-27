@@ -586,7 +586,6 @@ Validators earn rewards proportional to their stake and uptime, similar to proof
 
 ### Community Channels
 
-**Discord**: Real-time discussion, support, and coordination among defenders, attackers, and validators
 
 **Forum**: Long-form technical discussions, governance proposals, and research sharing
 
@@ -646,7 +645,7 @@ Sui Sentinel is open-source and community-driven. We welcome contributions acros
 
 **Community**: Content creation, education, user support, events
 
-Join our Discord or GitHub to get started. All contributors earn $SENTINEL tokens for valuable contributions.
+Join our GitHub to get started. All contributors earn $SENTINEL tokens for valuable contributions.
 
 ---
 

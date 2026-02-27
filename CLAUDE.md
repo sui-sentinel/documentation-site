@@ -61,4 +61,4 @@ Documentation is organized by groups in `docs.json`:
 
 - Protocol app: https://app.suisentinel.xyz
 - Contracts: https://github.com/sui-sentinel/contracts
-- Community: Telegram (https://t.me/suisentinel), Discord, Twitter/X
+- Community: Telegram (https://t.me/suisentinel), Twitter/X

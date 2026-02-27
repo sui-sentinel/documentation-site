@@ -18,10 +18,3 @@ mint dev
 
 View your local preview at `http://localhost:3000`.
 
-```
-        {
-          "anchor": "Join the Discord",
-          "href": "https://discord.gg/bAz9g9u69K",
-          "icon": "discord"
-        }
-```
