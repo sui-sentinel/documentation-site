@@ -1,75 +1,91 @@
 ---
-title: 'Attacker Rewards Mechanism'
-description: 'Attackers are the sui sentinels immune system, discovering vulnerabilities through creative prompt engineering. They compete for SUI bounties while earning SENTINEL tokens through multiple reward streams that recognize both successful breaches and valuable failed attempts.'
+title: Attacker Rewards
+description: How red teamers earn SUI bounties and SENTINEL tokens by breaking AI Sentinels
 ---
 
-**Total Allocation**: 1.575B SENTINEL (35% of Community Incentives)
+# Attacker Rewards
 
-## Reward Streams
+Attackers are Sui Sentinel's immune system — stress-testing AI systems through creative prompt engineering and getting paid instantly when they break through. Every attack attempt earns rewards, whether you breach the Sentinel or not.
 
-Attackers earn through **five independent mechanisms**, each incentivizing different aspects of AI security research:
-
-1. **Slot Machine Rewards** (guaranteed per attempt)
-2. **Breakthrough Bounties** (successful breaches)
-3. **Innovation Grants** (novel techniques)
-4. **Leaderboard Seasons** (competitive rankings)
-5. **Referral Multipliers** (ecosystem growth)
-
----
-
-## 1. Slot Machine Rewards
-
-### Base Mechanism
-
-**Every attack attempt** triggers a token reward, regardless of success. This ensures even failed attacks contribute valuable data to the ecosystem.
-
-```
-Base Roll: 100 - 1,000 SENTINEL per attack
-Distribution: Weighted random (higher probabilities at lower values)
-
-Probability Distribution:
-100-300 SENTINEL: 60% chance
-301-500 SENTINEL: 25% chance
-501-750 SENTINEL: 12% chance
-751-1,000 SENTINEL: 3% chance
-```
+<CardGroup cols={2}>
+  <Card title="SUI Bounties" icon="bolt">
+    Successfully breach a Sentinel and claim the **entire reward pool** — paid instantly on-chain
+    with no intermediary.
+  </Card>
+  <Card title="SENTINEL Tokens" icon="slot-machine">
+    Every attack attempt spins the slot machine. Earn tokens win or lose, with bonuses for
+    near-misses and leaderboard performance.
+  </Card>
+</CardGroup>
 
 ---
 
-#### **Precision Bonus**
+## How Attacking Works
 
-Near-misses are valuable—they reveal defense weaknesses.
+Each message you send to a Sentinel costs a small per-message fee set by the defender. That fee is split automatically on-chain:
 
-```
-Precision Bonus = +25% if Judge Score between 0.70 - 0.89
+| Allocation | Recipient   | Purpose                                     |
+| ---------- | ----------- | ------------------------------------------- |
+| **50%**    | Reward Pool | Stacks into the bounty you're competing for |
+| **40%**    | Defender    | Compensation for capital at risk            |
+| **10%**    | Protocol    | Development and maintenance                 |
 
-Example:
-- Base roll: 500 SENTINEL
-- Judge Score: 0.83 (close but no breach)
-- Final reward: 500 × 1.25 = 625 SENTINEL
-```
-
-**Judge Score Scale:**
-
-- 0.00 - 0.69: Total failure (no bonus)
-- 0.70 - 0.89: Near breach (Precision Bonus)
-- 0.90 - 1.00: Successful breach (Breakthrough Bounty)
-
-**Why This Matters**: Encourages attackers to refine techniques rather than spam low-quality attempts.
+<Info>
+  Failed attacks don't just cost you — they **grow the prize**. Every message that doesn't breach a
+  Sentinel adds 50% of its fee to the pool, making the bounty bigger for your next attempt.
+</Info>
 
 ---
 
-## 2. Breakthrough Bounties
+## Winning the Bounty
 
-### Core Payout Structure
+Successfully breach a Sentinel (achieve a passing Judge Score) and you claim the **entire reward pool** instantly.
 
-When you successfully breach a Sentinel (Judge Score ≥ 0.90), you unlock the prize pool:
+The longer a Sentinel has been live and actively attacked, the larger its pool — meaning well-defended Sentinels are worth more to crack.
+
+<Note>
+  **Judge Score ≥ 0.90** is required to trigger a successful breach and claim the SUI reward pool.
+</Note>
+
+---
+
+## Slot Machine: SENTINEL Token Rewards
+
+Every attack attempt — win or lose — spins the slot machine and earns you SENTINEL tokens. It's a guaranteed reward just for showing up and challenging a Sentinel.
 
 ```
-SUI Reward = Prize Pool × 0.70 (existing protocol mechanism)
-SENTINEL Bonus = Prize Pool × Token Conversion × Difficulty Multiplier
+100 – 1,000 SENTINEL per attack attempt (random)
 ```
 
-**Token Conversion Rate**: Based on real-time SUI/SENTINEL price (e.g., 1 SUI = 1,000 SENTINEL at $0.001 token price)
+<Note>
+  The slot machine spins on every message, regardless of whether you breach the Sentinel. Stack up
+  attempts and tokens accumulate fast.
+</Note>
 
-More info on attacker rewards coming soon!
+---
+
+## Leaderboard & Seasons
+
+Competitive attackers earn additional recognition and rewards through seasonal leaderboards. Rankings are based on:
+
+- Total successful breaches
+- Cumulative Judge Scores across attempts
+- Novel attack techniques discovered
+
+<Info>
+  Leaderboard season details and reward allocations will be announced soon. Follow
+  [@suisentinel](https://x.com/suisentinel) for updates.
+</Info>
+
+---
+
+## Start Attacking
+
+<CardGroup cols={2}>
+  <Card title="Browse Sentinels" icon="crosshairs" href="https://app.suisentinel.xyz">
+    Find live Sentinels to challenge — filter by pool size, difficulty, and attack count.
+  </Card>
+  <Card title="Join the Community" icon="telegram" href="https://t.me/suisentinel">
+    Share techniques, discuss strategies, and stay up to date on new Sentinels.
+  </Card>
+</CardGroup>

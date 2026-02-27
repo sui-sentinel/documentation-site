@@ -1,0 +1,280 @@
+---
+title: Technical Architecture
+description: Deep dive into Sui Sentinel's hybrid architecture combining TEE-secured AI, on-chain verification, and economic incentives
+---
+
+# Sui Sentinel Technical Architecture Document
+
+At the highest level, Sui Sentinel is composed of **four core components**:
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                         Frontend                            │
+│              (Defender UI / Attacker UI)                    │
+└────────────────────┬────────────────────┬───────────────────┘
+                     │                    │
+          ┌──────────▼──────┐   ┌─────────▼──────────┐
+          │  Sui Blockchain  │   │   TEE Rust Server   │
+          │  Smart Contracts │   │  (AWS Nitro Enclave)│
+          └──────────┬───────┘   └─────────┬──────────┘
+                     │                     │
+          ┌──────────▼───────────────────  ▼──────────┐
+          │            Indexer + MongoDB               │
+          │     (Event indexing + Agent metadata)      │
+          └────────────────────────────────────────────┘
+                                │
+                    ┌───────────▼───────────┐
+                    │  AI Red Team Module   │
+                    │  (Python + DSPy)      │
+                    └───────────────────────┘
+```
+
+### Component Summary
+
+| Component          | Technology               | Role                                                 |
+| ------------------ | ------------------------ | ---------------------------------------------------- |
+| Smart Contracts    | Move (Sui)               | On-chain settlement, fund management, agent registry |
+| TEE Server         | Rust (AWS Nitro Enclave) | Cryptographic attestation, prompt routing            |
+| AI Red Team Module | Python, DSPy             | Verdict judgment, attack categorization              |
+| Indexer            | Event-driven             | Indexes contract events, exposes REST API            |
+| Database           | MongoDB                  | Stores sentinel configs, memory contexts             |
+
+---
+
+## Core Components
+
+### 1. AI Red Teaming Module
+
+Built using **DSPy** — a declarative framework for building modular AI software — this Python module is responsible for:
+
+- Routing attacker prompts to the configured sentinel model
+- Running the **verdict module** (fine-tuned DSPy predictor) to determine if an attack succeeded
+- Categorizing attacks against **OWASP** and **MITRE ATLAS** taxonomies
+- Scoring attacks to provide defenders with actionable analytics
+
+Supported model providers:
+
+- OpenAI
+- Anthropic
+- AWS Bedrock
+- Custom (any OpenAI-compatible endpoint + API key)
+
+### 2. Rust Server in Trusted Execution Environment (TEE)
+
+The backend server runs inside an **AWS Nitro Enclave**, a hardware-isolated TEE. It is deployed via the **Nautilus framework** developed by Mysten Labs.
+
+Key responsibilities:
+
+- Receiving and validating `/register-agent` and `/consume-prompt` requests
+- Generating **Ed25519 cryptographic signatures** over all responses
+- Validating attack object IDs against the Sui node before processing
+- Ensuring no response can be forged outside the enclave
+
+The Ed25519 keypair is unique to and bound within the AWS enclave — it cannot be extracted.
+
+### 3. Sui Smart Contracts (Move)
+
+Deployed on **Sui Mainnet**, audited by **OtterSec**. Contracts handle:
+
+- Sentinel registration and on-chain verification of TEE signatures
+- Fund management (reward pools, message fees, withdrawals)
+- Attack lifecycle (`request_attack` → `consume_prompt`)
+- SENTINEL token reward distribution via the indexer
+
+### 4. Indexer
+
+- Listens to on-chain events emitted by contracts (e.g., sentinel registration, attacks)
+- Exposes REST API: `https://api.suisentinel.xyz/agents/mainnet/{agent_id}`
+- Also handles SENTINEL token reward distribution triggers
+
+---
+
+## User Roles & Flows
+
+### Defender Flow
+
+```
+1. Select model provider (OpenAI / Anthropic / Bedrock / Custom)
+2. Configure:
+   - Public system prompt  (visible to attackers)
+   - Private system prompt (hidden from attackers, used in evaluation)
+   - Attack goal           (what counts as a successful breach)
+   - Jury instructions     (how the verdict model evaluates responses)
+3. Set cost_per_message and initial reward pool
+4. Call /register-agent on TEE server → receive signed response
+5. Call register_agent on-chain → sentinel created
+6. Call fund_agent on-chain → sentinel funded
+7. Funds locked for 14 days to give attackers time to attempt breaches
+```
+
+### Attacker Flow
+
+```
+1. Browse active sentinels
+2. Call request_attack on-chain → pay message fee → receive attack object
+3. Send prompt to /consume-prompt on TEE server (with attack_object_id)
+4. TEE server:
+   a. Validates attack object against Sui node
+   b. Routes prompt to sentinel's configured model
+   c. Runs jury verdict module
+   d. Signs and returns result
+5. Frontend calls consume_prompt on-chain with signed result
+6. If successful → entire reward pool transferred to attacker instantly
+7. If failed → 50% of message fee added to reward pool (growing incentive)
+8. Attacker receives a free slot machine spin for SENTINEL token rewards
+```
+
+---
+
+## API Reference
+
+The TEE server exposes two primary endpoints. Both return a cryptographically signed response that the frontend submits directly to the smart contract for on-chain verification.
+
+| Endpoint                  | Method | Description                                                                                                                                                                                |
+| ------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `/mainnet/register-agent` | POST   | Registers a new sentinel inside the TEE. Takes the sentinel configuration (prompts, model, cost) and returns a signed agent record.                                                        |
+| `/mainnet/consume-prompt` | POST   | Core attack endpoint. Accepts an agent ID, attacker message, and on-chain attack object ID. Validates the attack, routes the prompt, runs the verdict module, and returns a signed result. |
+
+Full request/response schemas are available in the project repository and docs.
+
+---
+
+## Smart Contracts
+
+**Repository:** `https://github.com/sui-sentinel/contracts`  
+**Audit:** OtterSec (report publicly available)
+
+### Key Contract Methods
+
+| Method           | Description                                               |
+| ---------------- | --------------------------------------------------------- |
+| `register_agent` | Verifies TEE signature and registers sentinel on-chain    |
+| `fund_agent`     | Adds funds to a sentinel's reward pool                    |
+| `request_attack` | Initiates attack, pays message fee, returns attack object |
+| `consume_prompt` | Verifies TEE-signed verdict and settles funds             |
+| `claim_fee`      | Defender claims their 40% share of message fees           |
+| `withdraw`       | Sentinel owner withdraws pool (14-day lock enforced)      |
+
+### Settlement
+
+When `consume_prompt` is called on-chain, the contract verifies the Ed25519 signature from the TEE against the registered enclave key. If the signature is valid and the verdict is a success, the entire reward pool is transferred to the attacker immediately and the sentinel becomes inactive.
+
+---
+
+## Cryptographic Attestation
+
+All TEE server responses are signed using an **Ed25519 keypair** that is unique to and locked within the AWS Nitro Enclave. The signing payload is BCS-serialized and includes an intent scope and timestamp, ensuring responses are tamper-evident and replay-resistant. The keypair cannot be extracted from the enclave.
+
+```
+TEE Server signs response with enclave Ed25519 key
+        ↓
+Frontend submits signed response to smart contract
+        ↓
+Contract verifies signature against registered enclave public key
+        ↓
+If valid → on-chain state updated and funds settled
+```
+
+This chain ensures that:
+
+- Verdict results cannot be spoofed
+- Payouts only happen for cryptographically verified successful attacks
+- The entire process is auditable on-chain
+
+---
+
+## AI Red Teaming Module
+
+### DSPy Verdict Module
+
+The verdict module is a fine-tuned DSPy predictor using a **predictive schema** that evaluates:
+
+- The attacker's prompt
+- The sentinel model's response
+- The defender's public instructions
+- The defender's private instructions (not revealed to attacker)
+- The attack goal
+- The jury instructions
+
+It returns a structured verdict: `success: bool` + `score: u8` + a natural language explanation.
+
+### Attack Categorization
+
+Every attack is automatically categorized using:
+
+- **OWASP LLM Top 10** taxonomy
+- **MITRE ATLAS** framework
+
+This gives defenders a structured audit trail of how their system was attacked, which categories of vulnerabilities were probed, and where defenses held or failed.
+
+### Supported Attack Types
+
+| Category                 | Description                                           |
+| ------------------------ | ----------------------------------------------------- |
+| Prompt Injection         | Manipulating model behavior via crafted inputs        |
+| Training Data Extraction | Attempting to retrieve memorized training data        |
+| Backdoor Exploitation    | Triggering hidden model behaviors                     |
+| Adversarial Inputs       | Inputs designed to cause misclassification            |
+| Data Poisoning           | Corrupting model outputs through context manipulation |
+| Exfiltration             | Extracting sensitive information from model context   |
+| Supply Chain Attacks     | Exploiting dependencies in model pipeline             |
+
+---
+
+## Economic Model
+
+### Message Fee Distribution
+
+Every message fee paid by an attacker is split three ways:
+
+```
+Message Fee (100%)
+    ├── 50% → Sentinel Reward Pool  (grows with failed attacks)
+    ├── 40% → Sentinel Owner        (incentive for staking funds)
+    └── 10% → Protocol              (development & maintenance)
+```
+
+### SENTINEL Token Incentives
+
+- **Defenders** earn SENTINEL tokens proportional to their reward pool size, continuously while the sentinel is active
+- **Attackers** earn a free slot machine spin for SENTINEL tokens on every attack attempt
+- **Early liquidity providers** (defenders who launch sentinels early) receive boosted token rewards
+
+### Fund Locking
+
+When a sentinel is launched, funds are locked for **14 days**. This gives the attacker community sufficient time to attempt breaches before the defender can withdraw. Withdrawal after the lock period returns the full pool to the sentinel owner.
+
+---
+
+## Security Model
+
+### Threat Model Comparison
+
+| Dimension        | Traditional Cybersecurity     | Gen AI Security                        |
+| ---------------- | ----------------------------- | -------------------------------------- |
+| Attack Focus     | Code vulnerabilities          | AI decision-making                     |
+| Attack Surface   | Technical (ports, APIs, code) | Semantic (language, meaning)           |
+| Attacker Profile | Expert hackers                | Anyone                                 |
+| Attack Modality  | Code exploits                 | Natural language, images, audio, video |
+| Detection        | Often detected quickly        | Can go unnoticed for extended periods  |
+
+### Trust Assumptions
+
+- The AWS Nitro Enclave provides hardware-level isolation — the TEE keypair cannot be extracted
+- Smart contract logic is publicly verifiable on Sui Mainnet
+- Contract code has been audited by OtterSec
+- Private prompts are never exposed to the attacker — only used internally for verdict evaluation
+
+### Competitive Landscape
+
+Web2 alternatives in the AI security space include Lakera, Mindguard, and Prompt Security. Sui Sentinel differentiates through trustless on-chain verification, instant crypto payouts, and a self-sustaining incentive economy that grows in proportion to attack activity.
+
+---
+
+## References
+
+- **Docs:** https://docs.suisentinel.xyz
+- **Contracts:** https://github.com/sui-sentinel/contracts
+- **Agents API:** https://api.suisentinel.xyz/agents/mainnet/{agent_id}
+- **OtterSec Audit:** Publicly available via docs
+- **Nautilus Framework:** Developed by Mysten Labs for TEE deployments on Sui

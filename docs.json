@@ -16,9 +16,16 @@
         "pages": [
           "first-steps/index",
           "first-steps/protocol-mechanics",
-          "first-steps/judgment-process",
           "first-steps/economic-design",
           "first-steps/broader-applications"
+        ]
+      },
+      {
+        "group": "Incentives And Rewards",
+        "pages": [
+          "incentives/defender-rewards",
+          "incentives/attacker-rewards",
+          "incentives/ambassador-rewards"
         ]
       },
       {
@@ -45,42 +52,24 @@
         ]
       },
       {
-        "group": "Incentives And Rewards",
-        "pages": [
-          "incentives/defender-rewards",
-          "incentives/attacker-rewards",
-          "incentives/scout-rewards",
-          "incentives/rewards-program"
-        ]
-      },
-      {
         "group": "Vision And Opportunity",
         "pages": [
           "vision-and-opportunity/vision-and-opportunity"
         ]
       },
       {
-        "group": "Models And Fine Tuning",
+        "group": "Technical Architecture",
         "pages": [
-          "models-and-finetuning/LLM-model"
+          "technical-architecture/architecture",
+          "technical-architecture/judgment-process"
         ]
       },
       {
         "group": "Advance Concepts",
         "pages": [
-          "advance-concepts/architecture",
           "advance-concepts/signature-generation",
           "advance-concepts/prompt-injection-terminology",
           "advance-concepts/ai-safety-research"
-        ]
-      },
-      {
-        "group": "FAQ",
-        "pages": [
-          "faq/general-faq",
-          "faq/defender-faq",
-          "faq/attacker-faq",
-          "faq/troubleshooting"
         ]
       },
       {
@@ -88,8 +77,7 @@
         "pages": [
           "reference/audits",
           "reference/contract-addresses",
-          "reference/network-configuration",
-          "reference/api-reference"
+          "reference/network-configuration"
         ]
       },
       {
