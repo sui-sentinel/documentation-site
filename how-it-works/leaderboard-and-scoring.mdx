@@ -1,0 +1,142 @@
+---
+title: 'Leaderboard & Scoring'
+description: 'How defenders and attackers are ranked on Sui Sentinel, and what every field means.'
+icon: 'trophy'
+---
+
+## Overview
+
+The Sui Sentinel leaderboard is split into two tabs — **Defenders** and **Attackers** — reflecting the two sides of the platform's marketplace. Each tab has its own ranking logic, tailored to reward the behaviours that strengthen the protocol.
+
+<CardGroup cols={2}>
+  <Card title="Defenders">
+    Ranked by a **Composite Defender Score** that rewards large pools, resilient Sentinels, and
+    sustained attack volume survived.
+  </Card>
+  <Card title="Attackers">
+    Ranked by **Total Bounty Won** — the sum of all reward pools claimed through successful
+    breaches.
+  </Card>
+</CardGroup>
+
+---
+
+## Defenders Leaderboard
+
+### Ranking & Sorting
+
+Defenders are sorted by **Composite Defender Score** (descending) by default. Every column is sortable. The table paginates at 25 rows per page.
+
+### Column Reference
+
+| Column                | What it shows                                                                               |
+| --------------------- | ------------------------------------------------------------------------------------------- |
+| **# Rank**            | Position based on Composite Defender Score                                                  |
+| **Defender**          | Avatar + display name or truncated wallet (`0x1a2b...9f`). Links to the defender's profile. |
+| **Tier**              | Badge based on balance: Bronze → Silver → Gold → Diamond → Legendary                        |
+| **Composite Score**   | Primary ranking metric. See formula below.                                                  |
+| **TVL(SUI)**          | Sum of all active reward pools across your live Sentinels, in SUI                           |
+| **Active Sentinels**  | Count of Sentinels currently live and open to attack                                        |
+| **Total Sentinels**   | Total Sentinels ever created, including inactive ones                                       |
+| **Longest Surviving** | Age (days + hours) of your oldest unbreached Sentinel, still live                           |
+| **Attacks Survived**  | All `consume_prompt` calls where `success = false` across all your Sentinels                |
+| **Breach Rate**       | Percentage of all attacks against your Sentinels that succeeded                             |
+| **Fees Earned(SUI)**  | Cumulative fees claimed + pending, in SUI. Defenders earn 40% of every attack fee.          |
+| **$SENTINEL Rewards** | `$SENTINEL` token rewards distributed to you by the protocol indexer                        |
+
+### Composite Defender Score
+
+Raw balance alone is not a fair measure of a defender's strength. The Composite Defender Score combines four on-chain signals to reward defenders who maintain large, resilient pools that attract real attack volume.
+
+<Info>
+  The formula weights are a starting recommendation and will be tuned once sufficient on-chain data
+  is available. The current weights are published here so defenders understand exactly how to climb
+  the leaderboard.
+</Info>
+
+| Component                        | Weight | Logic                                                    |
+| -------------------------------- | ------ | -------------------------------------------------------- |
+| **Total Sentinel Balance (SUI)** | 40%    | Raw capital at risk across all active pools              |
+| **Total Attacks Survived**       | 30%    | Proof of resilience under real attack pressure           |
+| **Breach Rate (inverted)**       | 20%    | Lower breach rate = higher contribution to score         |
+| **Active Sentinel Count**        | 10%    | More live Sentinels = greater commitment to the protocol |
+
+**In plain terms:** a defender with a 500 SUI pool that has survived 1,000 attacks with a 1% breach rate will rank above a defender with a 600 SUI pool that has survived 50 attacks with a 20% breach rate.
+
+### Defender Tiers
+
+Defender tiers are based on your Total Sentinel Balance across all active Sentinels.
+
+| Tier      | Badge                 |
+| --------- | --------------------- |
+| Bronze    | Entry level           |
+| Silver    | Growing defender      |
+| Gold      | Established pool      |
+| Diamond   | High-capital defender |
+| Legendary | Top-tier commitment   |
+
+---
+
+## Attackers Leaderboard
+
+### Ranking & Sorting
+
+Attackers are sorted by **Total Bounty Won** (descending) by default. Every column is sortable. The table paginates at 25 rows per page.
+
+### Column Reference
+
+| Column                 | What it shows                                                                             |
+| ---------------------- | ----------------------------------------------------------------------------------------- |
+| **# Rank**             | Position based on Total Bounty Won                                                        |
+| **Attacker**           | Avatar + display name or truncated wallet. Links to the attacker's profile.               |
+| **Tier**               | Badge reflecting skill progression: Recruit → Hunter → Specialist → Elite → Apex Predator |
+| **Total Bounty Won**   | Sum of all reward pool payouts received from successful breaches, in SUI                  |
+| **Successful Attacks** | Count of `consume_prompt` calls where `success = true`                                    |
+| **Total Attacks**      | All `consume_prompt` calls submitted by this address                                      |
+| **Breach Rate %**      | Successful breaches ÷ total attacks sent                                                  |
+| **Avg Score on Win**   | Mean AI evaluation score (0–100) across all successful attacks                            |
+| **Largest Bounty**     | Maximum single payout received from one breach                                            |
+| **Attack Streak**      | 🔥 Consecutive days with at least one attack sent                                         |
+| **$SENTINEL**          | `$SENTINEL` token rewards distributed to you for attacking                                |
+| **Last Active**        | Timestamp of your most recent `consume_prompt` call (e.g. "2h ago")                       |
+
+### Attacker Tiers
+
+Attacker tiers reflect your proven red-teaming skill and are displayed as visual badges on your profile and leaderboard row.
+
+| Tier              | Threshold                                    |
+| ----------------- | -------------------------------------------- |
+| **Recruit**       | 0 successful breaches                        |
+| **Hunter**        | 1–4 successful breaches                      |
+| **Specialist**    | 5–14 successful breaches **or** 5+ SUI won   |
+| **Elite**         | 15–49 successful breaches **or** 25+ SUI won |
+| **Apex Predator** | 50+ successful breaches **or** 100+ SUI won  |
+
+<Note>
+  Tier thresholds will be adjusted over time as the attacker distribution on-chain becomes clearer.
+  Your tier is recalculated automatically after every confirmed breach.
+</Note>
+
+---
+
+## Filtering & Search
+
+Both tabs support the following filters:
+
+| Filter                         | Behaviour                                                 |
+| ------------------------------ | --------------------------------------------------------- |
+| **Search by wallet / name**    | Live filter as you type                                   |
+| **Filter by Tier**             | Multi-select dropdown                                     |
+| **Filter by Active Sentinels** | Toggle: show only defenders with at least 1 live Sentinel |
+| **Time Period**                | All-time (default) / Last 30 days / Last 7 days           |
+| **Sort by any column**         | Click any column header to sort ascending or descending   |
+
+---
+
+## Sharing Your Rank
+
+Every row has a share icon. Clicking it copies a deep link to that position, e.g.:
+
+```
+app.suisentinel.xyz/leaderboard?rank=3&tab=defenders
+```

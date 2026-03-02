@@ -25,14 +25,15 @@
           "how-it-works/protocol-mechanics",
           "how-it-works/economic-design",
           "how-it-works/judgment-process",
-          "how-it-works/ai-red-teaming"
+          "how-it-works/ai-red-teaming",
+          "how-it-works/leaderboard-and-scoring"
         ]
       },
       {
         "group": "Guides",
         "pages": [
           "guides/defender-guide",
-          "guides/writing-sentinel-instructions",
+          "guides/sentinel-instructions",
           "guides/how-to-feature-your-sentinel",
           "guides/attacker-guide",
           "guides/attack-examples",
