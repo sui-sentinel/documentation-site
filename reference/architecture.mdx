@@ -45,7 +45,7 @@ At the highest level, Sui Sentinel is composed of **four core components**:
 
 ### 1. AI Red Teaming Module
 
-Built using **DSPy** — a declarative framework for building modular AI software — this Python module is responsible for:
+Built using **DSPy**, a declarative framework for building modular AI software, this Python module is responsible for:
 
 - Routing attacker prompts to the configured sentinel model
 - Running the **verdict module** (fine-tuned DSPy predictor) to determine if an attack succeeded
@@ -70,7 +70,7 @@ Key responsibilities:
 - Validating attack object IDs against the Sui node before processing
 - Ensuring no response can be forged outside the enclave
 
-The Ed25519 keypair is unique to and bound within the AWS enclave — it cannot be extracted.
+The Ed25519 keypair is unique to and bound within the AWS enclave, it cannot be extracted.
 
 ### 3. Sui Smart Contracts (Move)
 
@@ -260,10 +260,10 @@ When a sentinel is launched, funds are locked for **14 days**. This gives the at
 
 ### Trust Assumptions
 
-- The AWS Nitro Enclave provides hardware-level isolation — the TEE keypair cannot be extracted
+- The AWS Nitro Enclave provides hardware-level isolation, the TEE keypair cannot be extracted
 - Smart contract logic is publicly verifiable on Sui Mainnet
 - Contract code has been audited by OtterSec
-- Private prompts are never exposed to the attacker — only used internally for verdict evaluation
+- Private prompts are never exposed to the attacker, only used internally for verdict evaluation
 
 ### Competitive Landscape
 
