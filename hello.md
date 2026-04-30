@@ -1,4 +1,4 @@
-# Sui Sentinel
+# Red Sentinel
 
 **Decentralized AI Red Teaming Protocol**
 
@@ -8,7 +8,7 @@ A cryptographically-verified protocol where AI models face continuous adversaria
 
 ## Overview
 
-Sui Sentinel transforms AI security testing from a closed, expensive process into an open, incentive-aligned protocol. We create a competitive game where:
+Red Sentinel transforms AI security testing from a closed, expensive process into an open, incentive-aligned protocol. We create a competitive game where:
 
 - **Defenders** stake capital to prove their AI systems can withstand adversarial attacks
 - **Attackers** earn rewards by discovering vulnerabilities through creative prompt engineering
@@ -58,7 +58,7 @@ Companies face impossible pressures: spend months on safety testing and lose com
 
 Attack techniques evolve faster than defensive measures. What works as a jailbreak today may fail tomorrow, while new attack vectors emerge weekly. Organizations need continuous red teaming, not point-in-time audits. But hiring dedicated adversarial researchers full-time is prohibitively expensive, and there's no liquid way for global security expertise to flow to where it's needed.
 
-### The Sui Sentinel Solution
+### The Red Sentinel Solution
 
 We solve these problems by transforming AI safety from a cost center into an economic game with aligned incentives:
 
@@ -428,7 +428,7 @@ _Real-world scenario_: A researcher's wallet address shows 47 successful jailbre
 
 Contribute to the public good by discovering vulnerabilities before malicious actors exploit them in production systems.
 
-_Real-world scenario_: A researcher discovers a subtle prompt injection technique that could be used for phishing. Instead of weaponizing it, they demonstrate it through Sui Sentinel, earning bounties while alerting the entire AI industry to the vulnerability class.
+_Real-world scenario_: A researcher discovers a subtle prompt injection technique that could be used for phishing. Instead of weaponizing it, they demonstrate it through Red Sentinel, earning bounties while alerting the entire AI industry to the vulnerability class.
 
 **Learn Through Practice**
 
@@ -458,7 +458,7 @@ Access global security talent without geographic or institutional barriers, demo
 
 ### For Defenders: Deploy Your First Sentinel
 
-Visit the Sui Sentinel web application and connect your Sui wallet. Navigate to "Deploy Sentinel" and configure your challenge:
+Visit the Red Sentinel web application and connect your Sui wallet. Navigate to "Deploy Sentinel" and configure your challenge:
 
 **Choose your model**: Select from supported LLM providers or add a custom API endpoint
 **Write your system prompt**: Define the behavioral constraints your model must follow
@@ -542,7 +542,7 @@ Validators earn rewards proportional to their stake and uptime, similar to proof
 
 **Integration & Partnerships:**
 
-- SDK for developers building on Sui Sentinel
+- SDK for developers building on Red Sentinel
 - Partnerships with AI companies for beta testing
 - Academic institution collaborations
 - Integration with AI safety organizations
@@ -618,7 +618,7 @@ Yes, but you must pay the attack fee like any other attacker. This prevents free
 Judges run in TEEs with cryptographic attestations. Validators are slashed for provably dishonest judgments. High-value attacks require consensus from multiple independent validators.
 
 **Q: Can I report vulnerabilities privately?**  
-You can contact defenders directly for negotiated private disclosure, or submit through Sui Sentinel to claim the public bounty. We encourage public disclosure through the protocol to benefit the broader community.
+You can contact defenders directly for negotiated private disclosure, or submit through Red Sentinel to claim the public bounty. We encourage public disclosure through the protocol to benefit the broader community.
 
 **Q: Are system prompts ever revealed publicly?**  
 Only after the Sentinel expires or is terminated by the defender. During active challenges, only the hash is public to maintain game integrity.
@@ -633,7 +633,7 @@ Yes. We're developing a private Sentinel mode where all data remains confidentia
 
 ## Contributing
 
-Sui Sentinel is open-source and community-driven. We welcome contributions across:
+Red Sentinel is open-source and community-driven. We welcome contributions across:
 
 **Protocol Development**: Smart contract improvements, economic mechanism refinement, governance design
 

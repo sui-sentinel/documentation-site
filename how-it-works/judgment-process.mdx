@@ -1,9 +1,9 @@
 ---
 title: 'Judgment Process'
-description: 'How attacks are evaluated and judged in the Sui Sentinel protocol.'
+description: 'How attacks are evaluated and judged in the Red Sentinel protocol.'
 ---
 
-The judgment system is the heart of Sui Sentinel's security guarantees. It determines whether an attack successfully violated a Sentinel's constraints through a multi-stage evaluation process that combines AI reasoning with cryptographic verification.
+The judgment system is the heart of Red Sentinel's security guarantees. It determines whether an attack successfully violated a Sentinel's constraints through a multi-stage evaluation process that combines AI reasoning with cryptographic verification.
 
 ## Overview
 
@@ -64,7 +64,7 @@ The jury's job is to detect all violation types, not just obvious ones.
 
 ### Multi-Model Consensus
 
-Unlike traditional systems that rely on a single judge (which could be biased, inconsistent, or exploitable), Sui Sentinel uses an **ensemble jury** of multiple independent AI models running in parallel.
+Unlike traditional systems that rely on a single judge (which could be biased, inconsistent, or exploitable), Red Sentinel uses an **ensemble jury** of multiple independent AI models running in parallel.
 
 **Default Jury Configuration:**
 
@@ -210,7 +210,7 @@ The signature is created through a cryptographic process using Ed25519 elliptic 
 
 ### Why This Matters
 
-Traditional security audits are opaque. You must trust the auditor's claims without independent verification. Sui Sentinel makes every judgment:
+Traditional security audits are opaque. You must trust the auditor's claims without independent verification. Red Sentinel makes every judgment:
 
 **Verifiable**: Anyone can check the signature and validate the attestation
 **Immutable**: Once recorded on-chain, results cannot be altered
