@@ -1,0 +1,205 @@
+---
+title: 'Solana Attack Flow & Transaction Costs'
+description: 'Understand exactly what happens on-chain when you attack a Solana Sentinel, why your wallet shows more than the attack fee, and what you actually pay.'
+---
+
+When you attack a Solana Sentinel, your wallet shows a transaction that looks more expensive than the listed attack fee. This page explains every line item — what it is, where it goes, and what comes back to you.
+
+---
+
+## The Two-Transaction Flow
+
+Attacking on Solana is a two-step on-chain process, unlike the single transaction on Sui.
+
+<CardGroup cols={2}>
+  <Card title="Step 1 — Request Attack" icon="lock">
+    Pays the attack fee, creates your attack ticket on-chain, and reserves your spot in line. This is what your wallet asks you to approve.
+  </Card>
+  <Card title="Step 2 — Consume Prompt" icon="check">
+    Submits the TEE-verified result on-chain. If you won, the prize pool transfers to you here. The attack ticket is closed and its rent is returned.
+  </Card>
+</CardGroup>
+
+Step 2 happens automatically after the TEE processes your message — you do not need to sign a second transaction manually.
+
+---
+
+## What Your Wallet Shows (and Why)
+
+When you confirm Step 1, the wallet simulator breaks down every account balance change. Here is what each line means:
+
+### Example: Attacking a 0.001 SOL Sentinel
+
+```
+Wallet confirmation dialog
+───────────────────────────────────────
+- 0.00268 SOL  (total leaving your wallet)
++ 0.0001 SOL   (wrapped SOL staying in your token account)
+
+Line items:
+  Compute Budget     0.00008 SOL   network fee
+  Transfer SOL       0.00111 SOL   wrapping SOL for the attack payment
+  Program (sentinel) ─              attack fee deducted from your wrapped SOL
+  Attack PDA         0.00157 SOL   temporary rent deposit
+```
+
+It looks like you're spending 0.00268 SOL for a 0.001 SOL attack. You're not. Read on.
+
+---
+
+## Cost Breakdown
+
+| Item | Amount | What it is | Returned? |
+|------|--------|-----------|-----------|
+| **Attack fee** | ~0.001 SOL | The fee set by the defender, split between prize pool, defender, and protocol | No — this is the cost of attacking |
+| **Network fee** | ~0.00008 SOL | Solana transaction fee | No |
+| **WSOL buffer** | +10% of fee | Extra SOL wrapped to cover dynamic fee changes | Yes — leftover comes back instantly |
+| **Attack PDA rent** | ~0.00157 SOL | Rent to store your attack ticket on-chain | **Yes** — returned to you in Step 2 |
+
+### Your actual net cost per attack
+
+```
+Attack fee:    0.001   SOL   (goes to prize pool / defender / protocol)
+Network fees:  0.00016 SOL   (two txns × ~0.00008 SOL)
+─────────────────────────────
+Total net:    ~0.00116 SOL
+```
+
+The Attack PDA rent (~0.00157 SOL) is fully returned when the result is settled on-chain. It is a deposit, not a fee.
+
+---
+
+## Why Solana Needs to Wrap SOL
+
+Solana's token program does not work with native SOL directly — it requires **Wrapped SOL (WSOL)**, which is SOL converted into a token-account balance so it can be transferred via SPL token instructions.
+
+The flow for each attack:
+
+```
+1. You approve the transaction
+2. SOL is transferred into your Wrapped SOL account (WSOL ATA)
+3. The attack fee is deducted from that WSOL account
+4. Leftover WSOL (the 10% buffer) is converted back to native SOL immediately
+```
+
+You never hold WSOL long-term. The conversion is atomic within the same transaction.
+
+---
+
+## Dynamic Pricing
+
+The attack fee is not always exactly what the defender set. The protocol applies a small multiplier that increases slightly with each attack a Sentinel receives:
+
+```
+effective_fee = base_fee × (1 + attack_count × 0.01)
+
+Examples for a 0.001 SOL base fee:
+  First attack:    0.00100 SOL   (0 previous attacks)
+  After 10 attacks: 0.00110 SOL  (+10%)
+  After 50 attacks: 0.00150 SOL  (+50%)
+  Maximum (3×):    0.00300 SOL   (caps at 3×)
+```
+
+This is why the platform wraps 10% more SOL than the displayed fee — to guarantee the transaction succeeds even if the on-chain price ticked up between when you loaded the page and when your transaction landed.
+
+Any SOL that was not consumed by the fee is returned to your wallet in the same transaction.
+
+---
+
+## What the Fee Is Split Into
+
+Once the effective fee leaves your account, the smart contract splits it automatically:
+
+| Share | Recipient | Amount (0.001 SOL example) |
+|-------|-----------|---------------------------|
+| 50% | Agent vault (prize pool) | 0.0005 SOL |
+| 40% | Defender's fee account | 0.0004 SOL |
+| 10% | Protocol wallet | 0.0001 SOL |
+
+The prize pool share compounds — every failed attack makes the Sentinel worth more to defeat.
+
+---
+
+## Full Transaction Lifecycle
+
+```
+You click "Send Message"
+        │
+        ▼
+┌─────────────────────────────┐
+│  Step 1: Request Attack      │
+│                              │
+│  • Wrap SOL → WSOL          │
+│  • Deduct attack fee         │
+│    ├─ 50% → prize pool      │
+│    ├─ 40% → defender        │
+│    └─ 10% → protocol        │
+│  • Create Attack PDA         │
+│    (your receipt on-chain)   │
+│  • Return leftover WSOL      │
+└─────────────────────────────┘
+        │
+        ▼
+   TEE processes your
+   message (~15 seconds)
+        │
+        ▼
+┌─────────────────────────────┐
+│  Step 2: Consume Prompt      │
+│  (automatic, no approval)    │
+│                              │
+│  If you won:                 │
+│  • Prize pool → your wallet  │
+│  • Sentinel marked defeated  │
+│                              │
+│  Either way:                 │
+│  • Attack PDA closed         │
+│  • Rent returned to you      │
+└─────────────────────────────┘
+```
+
+---
+
+## Frequently Asked Questions
+
+<AccordionGroup>
+
+<Accordion title="Why does my wallet show more SOL leaving than the attack fee?">
+Three things are included in Step 1: the actual attack fee, the WSOL wrapping buffer (returned immediately), and the Attack PDA rent deposit (returned after Step 2). Only the attack fee and network charges are permanent costs. Everything else comes back.
+</Accordion>
+
+<Accordion title="What is the +0.0001 SOL I see in the wallet confirmation?">
+That is the leftover from the 10% buffer after the actual dynamic fee is deducted. It is converted back to native SOL in the same transaction and stays in your wallet. You are not losing it.
+</Accordion>
+
+<Accordion title="What is the Attack PDA rent and why do I pay it?">
+Solana charges a small rent deposit (~0.00157 SOL) to store data on-chain. Your attack ticket (the Attack PDA) records your wallet, the agent you're attacking, and your payment — this is what ensures the result is tied to you on-chain and cannot be tampered with. The deposit is returned to your wallet automatically when the attack is settled in Step 2.
+</Accordion>
+
+<Accordion title="What are Compute Budget instructions?">
+These are Solana's mechanism for setting transaction priority. Wallets like Phantom add them automatically to ensure your transaction lands quickly. They account for a small portion of the network fee (~0.00008 SOL total) and are standard on Solana.
+</Accordion>
+
+<Accordion title="Why does the first-ever attack on a Sentinel cost more?">
+The very first attack on mainnet may include a one-time token account creation for the protocol wallet (~0.002 SOL). This only ever happens once per token type and is paid for by the first attacker. All subsequent attackers do not see this charge.
+</Accordion>
+
+<Accordion title="What happens if the TEE fails or times out?">
+If the TEE cannot process your message, the attack ticket remains open on-chain. You can retry — the ticket is reusable. Your attack fee has already been paid, but you will not be double-charged for the same ticket.
+</Accordion>
+
+</AccordionGroup>
+
+---
+
+## Quick Reference
+
+| What you see in wallet | What it actually is | Returned? |
+|------------------------|---------------------|-----------|
+| `-0.00268 SOL` (example) | Fee + buffer + PDA rent | Partially |
+| `+0.0001 SOL` | Unused buffer, back in your wallet | Already returned |
+| `Attack PDA rent` | On-chain storage deposit | Yes, in Step 2 |
+| `Compute Budget` | Priority fee set by your wallet | No (tiny) |
+| Network fee | Solana validator fee | No |
+
+**Bottom line:** for a 0.001 SOL Sentinel, your true cost is ~0.00116 SOL per attack attempt.

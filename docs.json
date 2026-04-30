@@ -36,6 +36,7 @@
           "guides/how-to-feature-your-sentinel",
           "guides/attacker-guide",
           "guides/attack-examples",
+          "guides/solana-attack-flow",
           "guides/bridging-funds"
         ]
       },
@@ -75,7 +76,7 @@
   },
   "seo": {
     "metatags": {
-      "og:image": "https://docs.suisentinel.xyz/images/og-image-v5.png"
+      "og:image": "https://docs.redsentinel.xyz/images/og-image-v6.png"
     }
   },
   "thumbnails": {
