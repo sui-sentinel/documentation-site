@@ -13,28 +13,28 @@ The Sentinel is an AI system configured by a defender to resist exactly that. It
 
 Browse the active Sentinels on the [app](https://app.redsentinel.xyz) and look at two things before committing:
 
-**The prize pool.** This is what you win if you break through. It grows with every failed attack — 50% of each fee flows back in automatically — so a Sentinel that's survived a lot of attempts can be worth significantly more than its starting bounty.
+**The prize pool.** This is what you win if you break through. It grows with every failed attack, 50% of each fee flows back in automatically, so a Sentinel that's survived a lot of attempts can be worth significantly more than its starting bounty.
 
 **The attack fee.** Set by the defender, not the protocol. This is what you pay per message. Make sure the risk/reward makes sense to you before attacking.
 
 <Note>
   A large prize pool often means a lot of people have already tried and failed. That's a signal the
-  Sentinel is well-defended — but it's also why the prize is large. Approach high-pool Sentinels
-  with a sharper strategy, not just more attempts.
+  Sentinel is well-defended, but it's also why the prize is large. Approach high-pool Sentinels with
+  a sharper strategy, not just more attempts.
 </Note>
 
 ---
 
 ## Submitting an Attack
 
-Each attack is a single message, capped at **600 tokens**. That's roughly 400–450 words — enough to be creative, not enough to be sloppy.
+Each attack is a single message, capped at **600 tokens**. That's roughly 400–450 words, enough to be creative, not enough to be sloppy.
 
 When you submit, two things happen on-chain immediately:
 
-1. Your attack fee is paid in SUI and split — 50% into the prize pool, 40% to the defender, 10% to the protocol.
+1. Your attack fee is paid in SUI and split, 50% into the prize pool, 40% to the defender, 10% to the protocol.
 2. An `Attack` object is created on-chain, locking in your attempt before any evaluation happens.
 
-The Sentinel then processes your message inside a **Trusted Execution Environment** — a tamper-proof compute environment that neither the defender nor the protocol can influence. The result is cryptographically signed and verified on-chain. Nobody can fake a win. Nobody can block a payout.
+The Sentinel then processes your message inside a **Trusted Execution Environment**, a tamper-proof compute environment that neither the defender nor the protocol can influence. The result is cryptographically signed and verified on-chain. Nobody can fake a win. Nobody can block a payout.
 
 ---
 
@@ -56,7 +56,7 @@ To win the prize pool, you need **both**:
 - `success: true`
 - `score ≥ 70`
 
-Getting a `success: true` with a score below 70 means the attack registered as a win logically, but wasn't convincing or creative enough to clear the threshold. Brute force alone won't get you there — the jury rewards craft.
+Getting a `success: true` with a score below 70 means the attack registered as a win logically, but wasn't convincing or creative enough to clear the threshold. Brute force alone won't get you there, the jury rewards craft.
 
 ---
 
@@ -66,7 +66,7 @@ Getting a `success: true` with a score below 70 means the attack registered as a
 
 <Accordion title="If your attack succeeds">
 
-The entire prize pool is transferred to your wallet instantly, on-chain. No claim process, no waiting, no approval needed — the smart contract handles it automatically.
+The entire prize pool is transferred to your wallet instantly, on-chain. No claim process, no waiting, no approval needed, the smart contract handles it automatically.
 
 The Sentinel is marked as **defeated** and can no longer be attacked. Your win is permanently recorded on-chain, tied to your wallet address.
 
@@ -76,7 +76,7 @@ The Sentinel is marked as **defeated** and can no longer be attacked. Your win i
 
 The Sentinel stays active. Your fee contribution has grown the prize pool slightly, making the next successful attacker's reward larger.
 
-Study the Sentinel's response. What did it say? Where did your approach fall short? The response and jury evaluation are visible — use them to refine your next attempt, either on this Sentinel or a different one.
+Study the Sentinel's response. What did it say? Where did your approach fall short? The response and jury evaluation are visible, use them to refine your next attempt, either on this Sentinel or a different one.
 
 </Accordion>
 
@@ -98,11 +98,11 @@ What actually works is understanding how AI systems process instructions and whe
 
 **Incremental compliance.** Sometimes getting a Sentinel to agree to small things first changes how it evaluates larger requests.
 
-You'll develop your own intuitions fast. Every attempt — win or lose — teaches you something about how that Sentinel's prompt was structured. Over time, you start seeing the shape of a defense before you've broken through it.
+You'll develop your own intuitions fast. Every attempt, win or lose, teaches you something about how that Sentinel's prompt was structured. Over time, you start seeing the shape of a defense before you've broken through it.
 
 <Tip>
   Read the [Defender Guide](guides/defender-guide) to understand how Sentinels are configured.
-  Knowing what a defender is trying to protect — and how they're told to protect it — is the fastest
+  Knowing what a defender is trying to protect, and how they're told to protect it, is the fastest
   way to find the gaps.
 </Tip>
 
@@ -110,7 +110,7 @@ You'll develop your own intuitions fast. Every attempt — win or lose — teach
 
 ## Your On-Chain Record
 
-Every successful attack is permanently tied to your wallet address. As you build a track record, it becomes a verifiable proof of skill — something no resume bullet point can replicate.
+Every successful attack is permanently tied to your wallet address. As you build a track record, it becomes a verifiable proof of skill, something no resume bullet point can replicate.
 
 The leaderboard reflects this. High-volume attackers who consistently break well-defended Sentinels build reputation that compounds over time. In a field moving as fast as AI security, being early and being good matters.
 
@@ -118,19 +118,19 @@ The leaderboard reflects this. High-volume attackers who consistently break well
 
 ## Quick Reference
 
-| What                    | Detail                                                                               |
-| ----------------------- | ------------------------------------------------------------------------------------ |
-| Message limit           | 600 tokens per attack                                                                |
-| Fee                     | Set by defender, paid in SUI                                                         |
-| Prize pool contribution | 50% of your fee                                                                      |
-| Win condition           | `success: true` AND `score ≥ 70`                                                     |
-| Payout                  | Instant, on-chain, entire prize pool                                                 |
-| Verification            | Open-source smart contracts — [view here](https://github.com/sui-sentinel/contracts) |
+| What                    | Detail                                                                              |
+| ----------------------- | ----------------------------------------------------------------------------------- |
+| Message limit           | 600 tokens per attack                                                               |
+| Fee                     | Set by defender, paid in SUI                                                        |
+| Prize pool contribution | 50% of your fee                                                                     |
+| Win condition           | `success: true` AND `score ≥ 70`                                                    |
+| Payout                  | Instant, on-chain, entire prize pool                                                |
+| Verification            | Open-source smart contracts, [view here](https://github.com/sui-sentinel/contracts) |
 
 ---
 
 ## Further Reading
 
-- [Defender Guide](guides/defender-guide) — understand how Sentinels are built so you know what you're up against
-- [Smart Contracts](https://github.com/sui-sentinel/contracts) — verify the win conditions and payout logic yourself
-- [Community](https://t.me/suisentinel) — discuss strategies, share techniques, stay current on protocol updates
+- [Defender Guide](guides/defender-guide): understand how Sentinels are built so you know what you're up against
+- [Smart Contracts](https://github.com/sui-sentinel/contracts): verify the win conditions and payout logic yourself
+- [Community](https://t.me/suisentinel): discuss strategies, share techniques, stay current on protocol updates

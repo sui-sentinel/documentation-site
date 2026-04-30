@@ -18,3 +18,14 @@ mint dev
 
 View your local preview at `http://localhost:3000`.
 
+# Note
+
+Always run following commands after making any changes
+
+```bash
+mint validate
+```
+
+```bash
+mint broken-links
+```
