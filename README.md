@@ -1,6 +1,6 @@
-# Sui Sentinel Docs
+# Red Sentinel Docs
 
-Sui Sentinel is a decentralized platform for AI safety and alignement that transforms AI security testing(aka Red Teaming) from a closed, expensive process into an open, incentive-aligned process.
+Red Sentinel is a decentralized platform for AI safety and alignement that transforms AI security testing(aka Red Teaming) from a closed, expensive process into an open, incentive-aligned process.
 
 ## Development
 

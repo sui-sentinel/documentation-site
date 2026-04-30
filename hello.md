@@ -396,7 +396,7 @@ _Real-world scenario_: A healthcare AI company deploys a HIPAA-compliant medical
 
 Security isn't a one-time event. Keep Sentinels active post-launch to detect emerging vulnerabilities as new attack techniques develop.
 
-_Real-world scenario_: A financial advisory LLM maintains a permanent 1,000 SUI Sentinel. When a novel jailbreak technique emerges in the wild, security researchers discover it works against the Sentinel within 72 hours—allowing the company to patch their production system before any user is affected.
+_Real-world scenario_: A financial advisory LLM maintains a permanent 1,000 Red Sentinel. When a novel jailbreak technique emerges in the wild, security researchers discover it works against the Sentinel within 72 hours—allowing the company to patch their production system before any user is affected.
 
 **Competitive Benchmarking**
 

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Sui Sentinel is a documentation site for a decentralized AI safety and alignment platform on the Sui blockchain. The platform gamifies AI red teaming through adversarial testing, where defenders stake capital to prove their AI models can withstand attacks, and attackers earn rewards by discovering vulnerabilities.
+Red Sentinel is a documentation site for a decentralized AI safety and alignment platform on the Sui blockchain. The platform gamifies AI red teaming through adversarial testing, where defenders stake capital to prove their AI models can withstand attacks, and attackers earn rewards by discovering vulnerabilities.
 
 ## Tech Stack
 
