@@ -3,9 +3,7 @@ title: 'Solana Attack Flow & Transaction Costs'
 description: 'Understand exactly what happens on-chain when you attack a Solana Sentinel, why your wallet shows more than the attack fee, and what you actually pay.'
 ---
 
-When you attack a Solana Sentinel, your wallet shows a transaction that looks more expensive than the listed attack fee. This page explains every line item — what it is, where it goes, and what comes back to you.
-
----
+When you attack a Solana Sentinel, your wallet shows a transaction that looks more expensive than the listed attack fee. This page explains every line item: what it is, where it goes, and what comes back to you.
 
 ## The Two-Transaction Flow
 
@@ -20,9 +18,7 @@ Attacking on Solana is a two-step on-chain process, unlike the single transactio
   </Card>
 </CardGroup>
 
-Step 2 happens automatically after the TEE processes your message — you do not need to sign a second transaction manually.
-
----
+Step 2 happens automatically after the TEE processes your message. You do not need to sign a second transaction manually.
 
 ## What Your Wallet Shows (and Why)
 
@@ -45,16 +41,14 @@ Line items:
 
 It looks like you're spending 0.00268 SOL for a 0.001 SOL attack. You're not. Read on.
 
----
-
 ## Cost Breakdown
 
 | Item | Amount | What it is | Returned? |
 |------|--------|-----------|-----------|
-| **Attack fee** | ~0.001 SOL | The fee set by the defender, split between prize pool, defender, and protocol | No — this is the cost of attacking |
+| **Attack fee** | ~0.001 SOL | The fee set by the defender, split between prize pool, defender, and protocol | No (this is the cost of attacking) |
 | **Network fee** | ~0.00008 SOL | Solana transaction fee | No |
-| **WSOL buffer** | +10% of fee | Extra SOL wrapped to cover dynamic fee changes | Yes — leftover comes back instantly |
-| **Attack PDA rent** | ~0.00157 SOL | Rent to store your attack ticket on-chain | **Yes** — returned to you in Step 2 |
+| **WSOL buffer** | +10% of fee | Extra SOL wrapped to cover dynamic fee changes | Yes, leftover comes back instantly |
+| **Attack PDA rent** | ~0.00157 SOL | Rent to store your attack ticket on-chain | **Yes**, returned to you in Step 2 |
 
 ### Your actual net cost per attack
 
@@ -67,11 +61,9 @@ Total net:    ~0.00116 SOL
 
 The Attack PDA rent (~0.00157 SOL) is fully returned when the result is settled on-chain. It is a deposit, not a fee.
 
----
-
 ## Why Solana Needs to Wrap SOL
 
-Solana's token program does not work with native SOL directly — it requires **Wrapped SOL (WSOL)**, which is SOL converted into a token-account balance so it can be transferred via SPL token instructions.
+Solana's token program does not work with native SOL directly. It requires **Wrapped SOL (WSOL)**, which is SOL converted into a token-account balance so it can be transferred via SPL token instructions.
 
 The flow for each attack:
 
@@ -83,8 +75,6 @@ The flow for each attack:
 ```
 
 You never hold WSOL long-term. The conversion is atomic within the same transaction.
-
----
 
 ## Dynamic Pricing
 
@@ -100,11 +90,9 @@ Examples for a 0.001 SOL base fee:
   Maximum (3×):    0.00300 SOL   (caps at 3×)
 ```
 
-This is why the platform wraps 10% more SOL than the displayed fee — to guarantee the transaction succeeds even if the on-chain price ticked up between when you loaded the page and when your transaction landed.
+This is why the platform wraps 10% more SOL than the displayed fee, to guarantee the transaction succeeds even if the on-chain price ticked up between when you loaded the page and when your transaction landed.
 
 Any SOL that was not consumed by the fee is returned to your wallet in the same transaction.
-
----
 
 ## What the Fee Is Split Into
 
@@ -116,9 +104,7 @@ Once the effective fee leaves your account, the smart contract splits it automat
 | 40% | Defender's fee account | 0.0004 SOL |
 | 10% | Protocol wallet | 0.0001 SOL |
 
-The prize pool share compounds — every failed attack makes the Sentinel worth more to defeat.
-
----
+The prize pool share compounds with every failed attack, making the Sentinel worth more to defeat.
 
 ## Full Transaction Lifecycle
 
@@ -158,8 +144,6 @@ You click "Send Message"
 └─────────────────────────────┘
 ```
 
----
-
 ## Frequently Asked Questions
 
 <AccordionGroup>
@@ -173,7 +157,7 @@ That is the leftover from the 10% buffer after the actual dynamic fee is deducte
 </Accordion>
 
 <Accordion title="What is the Attack PDA rent and why do I pay it?">
-Solana charges a small rent deposit (~0.00157 SOL) to store data on-chain. Your attack ticket (the Attack PDA) records your wallet, the agent you're attacking, and your payment — this is what ensures the result is tied to you on-chain and cannot be tampered with. The deposit is returned to your wallet automatically when the attack is settled in Step 2.
+Solana charges a small rent deposit (~0.00157 SOL) to store data on-chain. Your attack ticket (the Attack PDA) records your wallet, the agent you're attacking, and your payment. This ensures the result is tied to you on-chain and cannot be tampered with. The deposit is returned to your wallet automatically when the attack is settled in Step 2.
 </Accordion>
 
 <Accordion title="What are Compute Budget instructions?">
@@ -185,12 +169,10 @@ The very first attack on mainnet may include a one-time token account creation f
 </Accordion>
 
 <Accordion title="What happens if the TEE fails or times out?">
-If the TEE cannot process your message, the attack ticket remains open on-chain. You can retry — the ticket is reusable. Your attack fee has already been paid, but you will not be double-charged for the same ticket.
+If the TEE cannot process your message, the attack ticket remains open on-chain. You can retry; the ticket is reusable. Your attack fee has already been paid, but you will not be double-charged for the same ticket.
 </Accordion>
 
 </AccordionGroup>
-
----
 
 ## Quick Reference
 
