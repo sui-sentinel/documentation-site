@@ -2,7 +2,7 @@
   "$schema": "https://mintlify.com/docs.json",
   "theme": "willow",
   "name": "Red Sentinel Docs",
-  "description": "Red Sentinel is a Crowdsource AI red teaming platform on Sui blockchain, live on Mainnet. Gamifies the critical process of red teaming through adversarial testing.",
+  "description": "Red Sentinel is a real-stakes AI security arena. Attack live Sentinels, learn how AI agents fail, earn real bounties, and build on-chain proof of skill.",
   "colors": {
     "primary": "#9a94a0",
     "light": "#ffffff",
@@ -14,7 +14,7 @@
       {
         "group": "Introduction",
         "pages": [
-          "introduction/what-is-sui-sentinel",
+          "introduction/what-is-red-sentinel",
           "introduction/use-cases",
           "introduction/quick-start"
         ]
